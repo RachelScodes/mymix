@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+
+   # root to: 'mixtapes#index'
+   # root to: 'login?'
+
+   resources :users do
+      resources :mixtapes
+      resources :songs
+   end
+
+   resources :mixtapes do
+      resources :songs
+   end
+
+   resources :songs
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
