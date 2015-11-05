@@ -1,4 +1,6 @@
 class Song < ActiveRecord::Base
    belongs_to :user
-   belongs_to :mixtape, dependent: :destroy
+
+   has_many :recordings
+   has_many :mixtapes, through: :recordings
 end

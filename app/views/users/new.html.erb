@@ -1,11 +1,23 @@
-<h1>Signup!</h1>
+<h1>You can be a DJ too!</h1>
 
 <%= form_for :user, url: '/users' do |f| %>
 
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
+  <%= f.label "What's your DJ name, yo?" %>
+  <%= f.text_field :name %>
+  <br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br>
+
+  <%= f.label "Enter your password" %>
   Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <br>
+
+  <%= f.label "One more time, just to be sure" %>
+  <%= f.password_field :password_confirmation %>
+  <br>
+
   <%= f.submit "Submit" %>
 
 <% end %>

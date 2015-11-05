@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="nav-top">
+</div>
 
-# added these lines.
+<div id="sidebar">
+</div>
+
+<div id="app">
 <% if @current_user %>
   Signed in as <%= @current_user.name %> | <%= link_to "Logout", '/logout' %>
 <% else %>
@@ -16,6 +21,9 @@
 <% end %>
 
 <%= yield %>
+</div>
 
+<div class="nav-bot">
+</div>
 </body>
 </html>
