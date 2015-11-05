@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
+   # The priority is based upon order of creation: first created -> highest priority.
+   # See how all your routes lay out with "rake routes".
 
+   # You can have the root of your site routed with "root"
    # root to: 'mixtapes#index'
-   # root to: 'login?'
+   root to: 'login#index'
+
+   # Example of regular route:
+   #   get 'products/:id' => 'catalog#view'
+   get '/login' => 'sessions#new'
+   post '/login' => 'sessions#create'
+   get '/logout' => 'sessions#destroy'
+
+   get '/signup' => 'users#new'
+   post '/users' => 'users#create'
 
    resources :users do
       resources :mixtapes
@@ -13,18 +25,6 @@ Rails.application.routes.draw do
    end
 
    resources :songs
-
-
-
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
