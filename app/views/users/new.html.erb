@@ -1,6 +1,6 @@
 <h1>You can be a DJ too!</h1>
 
-<%= form_for :user, url: '/users' do |f| %>
+<%= form_for :user, :html => {:class => 'create_user'}, url: '/users' do |f| %>
 
   <%= f.label "What's your DJ name, yo?" %>
   <%= f.text_field :name %>
@@ -11,7 +11,7 @@
   <br>
 
   <%= f.label "Enter your password" %>
-  Password: <%= f.password_field :password %>
+  <%= f.password_field :password %>
   <br>
 
   <%= f.label "One more time, just to be sure" %>
