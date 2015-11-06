@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+   def index
+      @users = User.all
+   end
+
    def new
    end
 
@@ -11,10 +15,6 @@ class UsersController < ApplicationController
      else
        redirect_to '/signup'
      end
-   end
-
-   def index
-      @users = User.all
    end
 
    def show

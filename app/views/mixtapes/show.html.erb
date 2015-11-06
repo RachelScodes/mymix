@@ -1,0 +1,14 @@
+<h1><%= @mixtape.name %></h1>
+<p><%= image_tag @mixtape.img_src %></p>
+<p><%= @mixtape.about %></p>
+<p><%= @mixtape.dedication %></p>
+
+<h3>(<%= @mixtape.songs.size %>) Songs</h3>
+<%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
+<%= render partial: 'songs/form' %>
+<br>
+
+<h3>Links</h3>
+<%= link_to "<< Back to Mixtapes List", mixtapes_path %>
+<%= link_to "Edit Mixtape", edit_mixtape_path(@mixtape) %>
+<%= link_to "Delete Mixtape", mixtape_path(@mixtape), method: :delete, data: {confirm: "Really delete the mixtape?"} %>

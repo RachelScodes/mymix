@@ -1,0 +1,13 @@
+<h1>All Mixtapes</h1>
+
+<ul id="mixtapes">
+   <% @mixtapes.each do |mixtape| %>
+     <li>
+       <%= link_to mixtape.name, mixtape_path(mixtape), class: 'mixtape_name', id: "mixtape_#{mixtape.id}" %>
+       <p><%= mixtape.about %></p>
+       <p><%= mixtape.dedication %></p>
+     </li>
+   <% end %>
+</ul>
+
+<%= link_to "Create a New Mixtape", new_mixtape_path, class: "new_mixtape" %>

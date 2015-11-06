@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105215854) do
+ActiveRecord::Schema.define(version: 20151106051015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20151105215854) do
     t.string   "name"
     t.string   "dedication"
     t.string   "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                                                                                        null: false
+    t.datetime "updated_at",                                                                                                        null: false
+    t.string   "img_src",    default: "http://i.dailymail.co.uk/i/pix/2013/01/08/article-2259055-16CF09AC000005DC-960_634x587.jpg"
   end
 
   create_table "recordings", force: :cascade do |t|
@@ -40,12 +41,12 @@ ActiveRecord::Schema.define(version: 20151105215854) do
     t.string   "album"
     t.date     "date_released"
     t.string   "src_url"
-    t.integer  "mixtape_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
   end
 
-  add_index "songs", ["mixtape_id"], name: "index_songs_on_mixtape_id", using: :btree
+  add_index "songs", ["user_id"], name: "index_songs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "dj_name"
@@ -60,5 +61,5 @@ ActiveRecord::Schema.define(version: 20151105215854) do
   add_index "users", ["dj_name"], name: "index_users_on_dj_name", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
-  add_foreign_key "songs", "mixtapes"
+  add_foreign_key "songs", "users"
 end
