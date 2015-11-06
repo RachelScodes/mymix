@@ -14,6 +14,9 @@
 <div id="sidebar">
    <% if current_user %>
      <ul id="side-links">
+
+        <li><%= link_to 'Create a New Mixtape', new_user_mixtape_path(current_user) %></li>
+        <li><%= link_to 'Add Song to the Mix.r Library', new_user_song_path(current_user) %></li>
      </ul>
    <% end %>
 </div>

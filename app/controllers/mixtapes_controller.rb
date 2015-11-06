@@ -11,7 +11,7 @@ class MixtapesController < ApplicationController
       @mixtape = Mixtape.find(params[:id])
       @song = Song.new
    end
-   
+
    def new
       @mixtape = Mixtape.new
    end
@@ -46,6 +46,12 @@ class MixtapesController < ApplicationController
       @mixtape.destroy
 
       redirect_to mixtapes_path
+   end
+
+   private
+
+   def mixtape_params
+      params.require(:mixtape).permit(:name, :dedication, :about, :img_src)
    end
 
 end
