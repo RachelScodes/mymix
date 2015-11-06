@@ -8,14 +8,19 @@
 </head>
 <body>
 <div class="nav-top">
+   <%= link_to 'Home', '/index' %>
 </div>
 
 <div id="sidebar">
+   <% if current_user %>
+     <ul id="side-links">
+     </ul>
+   <% end %>
 </div>
 
 <div id="app">
-<% if @current_user %>
-  Signed in as <%= @current_user.name %> | <%= link_to "Logout", '/logout' %>
+<% if current_user %>
+  Signed in as <%= current_user.dj_name %> | <%= link_to "Logout", '/logout' %>
 <% else %>
   <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
 <% end %>
