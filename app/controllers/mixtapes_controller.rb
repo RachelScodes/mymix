@@ -10,8 +10,8 @@ class MixtapesController < ApplicationController
    def show
       @mixtape = Mixtape.find(params[:id])
       @song = Song.new
-      @song.mixtape_id = @mixtape.id
    end
+   
    def new
       @mixtape = Mixtape.new
    end
