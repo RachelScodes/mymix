@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+<div class="user" id="<%= user.id %>">
+   <h1>DJ: <%= user.dj_name %></h1>
+   <%= image_tag user.avatar %>
+</div>
+   <% end %>

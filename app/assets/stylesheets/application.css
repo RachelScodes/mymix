@@ -23,6 +23,7 @@ body {
 #app{
    width: 800px;
    margin-left: 100px;
+   background-color: white;
 }
 
 .create_user {
@@ -32,7 +33,7 @@ body {
    padding: 30px;
    border-radius: 18px;
    box-shadow: inset 0 0 18px rgb(14, 0, 20);
-   width: 510px;
+   width: 600px;
 }
 
 label {
