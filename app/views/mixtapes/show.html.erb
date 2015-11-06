@@ -1,10 +1,22 @@
-<h1><%= @mixtape.name %></h1>
+<h1 class="mixtape" id="name"><%= @mixtape.name %></h1>
 <p><%= image_tag @mixtape.img_src %></p>
 <p><%= @mixtape.about %></p>
 <p><%= @mixtape.dedication %></p>
 
 <h3>(<%= @mixtape.songs.size %>) Songs</h3>
+
+<div class="song-list">
 <%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
+</div>
+
+<%= form_for @recording, url: 'mixtape#edit' do |f| %>
+<%= f.collection_select(:song_id, Song.all, :id, :title) %>
+<%= f.submit %>
+<% end %>
+
+
+<!-- Add a new song form -->
+<br>
 <%= render partial: 'songs/form' %>
 <br>
 

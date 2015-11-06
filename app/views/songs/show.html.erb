@@ -1,0 +1,13 @@
+<li class="song">
+  <p class="song-info"><span class="italic"><%= @song.title %></span> by <%= @song.artist %></p>
+  <p class="song-history">From "<%= @song.album %>", Released <%= @song.date_released %></p>
+  <%= link_to "Play", @song.src_url, :target => "_blank" %>
+  <p>Posted <%= distance_of_time_in_words(DateTime.now, @song.created_at) %> ago</p>
+</li>
+
+<h2>Song Facts:</h2>
+<p>nothing for now.</p>
+
+<%= link_to "<< Back to Songs List", songs_path %>
+<%= link_to "Edit Song", edit_song_path(@song) %>
+<%= link_to "Delete Song", song_path(@song), method: :delete, data: {confirm: "Really delete the song?"} %>

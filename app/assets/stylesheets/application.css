@@ -50,3 +50,50 @@ input {
    line-height: 30px;
    width: 179px;
 }
+
+
+h1.mixtape#name {
+   background-image: url('http://idacanada.com/magazine/issue-3/images/analogdigital_03.png');
+   background-repeat: no-repeat;
+   height: 304px;
+   width: 485px;
+   line-height: 115px;
+   font-family: Covered by your grace;
+   font-family: Rock salt;
+   font-family: Permanent marker;
+   text-align: center;
+}
+
+.song-list {
+   font-size: 15px;
+   background-image: url('http://blog.undr.com/2011/01/2011_01_15_16_30_21.jpg');
+   background-repeat: repeat-y;
+    width: 744px;
+   padding-top: 260px;
+   padding-left: 20px;
+   padding-right: 20px;
+   min-height: 381px;
+   font-family: 'Rock Salt';
+    background-size: cover;
+}
+
+.song-list p {
+  -webkit-transform: rotate(-0.5deg);
+  -moz-transform: rotate(-0.5deg);
+  -o-transform: rotate(-0.5deg);
+  transform: rotate(-0.5deg);
+}
+
+.song-history {
+   float: right;
+   position: relative;
+}
+
+.song-links {
+   float: right;
+   
+}
+
+
+.song {
+}
