@@ -1,5 +1,9 @@
-<h1>All Songs</h1>
+<h1>Mix.r Song Library</h1>
 
 <%= render partial: 'songs/display' %>
 
+<% if current_user %>
 <%= link_to "Add a Song to Mix.r Library", new_song_path, class: "new_song" %>
+<% else %>
+   Hey DJ, <%= link_to 'Login', '/login' %> or <%= link_to 'Create a DJ Account', '/signup' %> to add a new song to the Mix.r Library.
+<% end %>

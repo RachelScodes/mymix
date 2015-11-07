@@ -1,25 +1,22 @@
 class UsersController < ApplicationController
 
-   before_filter :first_or_authenticated, only: [:index, :new, :create]
+   # before_filter :first_or_authenticated, only: [:index, :new, :create]
 
    # User must be logged in to add/edit account info
    # Unless they are the first user!
 
-   def first_or_authenticated
-     unless User.count == 0 || current_user
-       redirect_to root_path
-       return false
-     end
-   end
+   # def first_or_authenticated
+   #   unless User.count == 0 || current_user
+   #     redirect_to root_path
+   #     return false
+   #   end
+   # end
 
    def index
       @users = User.all
    end
 
    def new
-   end
-
-   def edit
    end
 
    def create
@@ -30,6 +27,12 @@ class UsersController < ApplicationController
      else
        redirect_to '/signup'
      end
+   end
+
+   def edit
+   end
+
+   def update
    end
 
    def show

@@ -2,4 +2,8 @@
 
 <%= render partial: 'mixtapes/display' %>
 
-<%= link_to "Create a New Mixtape", new_mixtape_path, class: "new_mixtape" %>
+<% if current_user %>
+   <%= link_to "Create a New Mixtape", new_mixtape_path, class: "new_mixtape" %>
+<% else %>
+   Hey DJ, <%= link_to 'Login', '/login' %> or <%= link_to 'Create a DJ Account', '/signup' %> to record your own Mixtape.
+<% end %>

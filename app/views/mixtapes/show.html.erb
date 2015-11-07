@@ -9,6 +9,7 @@
 <%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
 </div>
 
+<% if current_user %>
 <div class="song-form" id="mixtape">
    <h3>Add a Song to <span class="mixtape" id="name"><%= @mixtape.name %>!</span></h3>
 
@@ -26,8 +27,13 @@
    <%= render partial: 'song_add' %>
    <br>
 </div>
+<% else %>
+   Hey DJ, <%= link_to 'Login', '/login' %> or <%= link_to 'Create a DJ Account', '/signup' %> to add songs to this Mixtape.
+<% end %>
 
 <h3>Links</h3>
 <%= link_to "<< Back to Mixtapes List", mixtapes_path %>
+<% if current_user %>
 <%= link_to "Edit Mixtape", edit_mixtape_path(@mixtape) %>
 <%= link_to "Delete Mixtape", mixtape_path(@mixtape), method: :delete, data: {confirm: "Really delete the mixtape?"} %>
+<% end %>
