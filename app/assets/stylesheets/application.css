@@ -115,11 +115,10 @@ ul#side-links {
    height: 22px;
    border: 2px solid green;
    overflow: hidden;
-   
 }
 
 .play iframe {
    display:block;
    width:100%;
-   height:400%;
+   height:300%
 }
