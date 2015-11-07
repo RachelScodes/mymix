@@ -1,6 +1,7 @@
 <% @users.each do |user| %>
-<div class="user" id="<%= user.id %>">
-   <h1>DJ: <%= user.dj_name %></h1>
-   <%= image_tag user.avatar %>
-</div>
-   <% end %>
+   <div class="user" id="<%= user.id %>">
+      <h1>DJ: <%= user.dj_name %></h1>
+      <%= image_tag user.avatar %>
+      <p> View <%= user.dj_name %>'s <%= link_to 'Collection', user_path(user) %></p>
+   </div>
+<% end %>

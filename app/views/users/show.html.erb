@@ -2,3 +2,15 @@
    <h1>DJ: <%= @user.dj_name %></h1>
    <%= image_tag @user.avatar %>
 </div>
+
+<div class="user-collection">
+<h2>Your Collection</h2>
+
+<h3>Display Mixtapes</h3>
+<p>mixtapes here</p><br>
+<h3>Display Songs</h3>
+<p>songs here</p>
+</div>
+
+<h3>Links</h3>
+<%= link_to "<< Back to DJ List", users_path %>
