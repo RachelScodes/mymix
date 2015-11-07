@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106232813) do
+ActiveRecord::Schema.define(version: 20151107164535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(version: 20151106232813) do
     t.datetime "created_at",                                                                                                        null: false
     t.datetime "updated_at",                                                                                                        null: false
     t.string   "img_src",    default: "http://i.dailymail.co.uk/i/pix/2013/01/08/article-2259055-16CF09AC000005DC-960_634x587.jpg"
+    t.integer  "user_id"
   end
+
+  add_index "mixtapes", ["user_id"], name: "index_mixtapes_on_user_id", using: :btree
 
   create_table "mixtapes_songs", id: false, force: :cascade do |t|
     t.integer "mixtape_id"
@@ -56,5 +59,6 @@ ActiveRecord::Schema.define(version: 20151106232813) do
   add_index "users", ["dj_name"], name: "index_users_on_dj_name", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "mixtapes", "users"
   add_foreign_key "songs", "users"
 end
