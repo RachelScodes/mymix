@@ -18,8 +18,8 @@ Rails.application.routes.draw do
 
    resources :mixtapes do
       member do
-         put 'hit_record'
-         put 'erase_recording'
+         post 'record_song'
+         post 'erase_song'
       end
    end
 

@@ -40,7 +40,6 @@ class MixtapesController < ApplicationController
 
    def destroy
       @mixtape = Mixtape.find(params[:id])
-
       # flash.notice = "Mixtape '#{@mixtape.title}' Deleted!"
 
       @mixtape.destroy

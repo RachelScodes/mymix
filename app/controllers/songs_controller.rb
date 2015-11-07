@@ -61,7 +61,6 @@ class SongsController < ApplicationController
       # therefore redirect based on how you got to view
       # if viewed detail from mixtape, go back to that tape
       # if viewed from user page, go back to that page
-      binding.pry
       redirect_to @back_url
    end
 
