@@ -30,9 +30,16 @@ class UsersController < ApplicationController
    end
 
    def edit
+      @user = User.find(params[:id])
    end
 
    def update
+      user = User.find(params[:id])
+      user.update(user_params)
+
+      # flash.notice = "Mixtape '#{@mixtape.title}' Updated!"
+
+      redirect_to user_path(user)
    end
 
    def show

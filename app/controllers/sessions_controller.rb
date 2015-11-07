@@ -24,4 +24,8 @@ class SessionsController < ApplicationController
       redirect_to '/login'
    end
 
+   def store_location
+      @back_url = URI(request.referer).path
+   end
+
 end

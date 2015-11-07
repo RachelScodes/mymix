@@ -1,3 +1,26 @@
 <h1>Edit your profile:</h1>
 
-<%= render partial: 'form' %>
+<%= form_for :user do |f| %>
+   <%= f.label "What's your new DJ name, yo?" %>
+   <%= f.text_field :dj_name %>
+   <br>
+
+   <%= f.label "Enter a new avatar" %>
+   <%= f.text_field :avatar %>
+   <br>
+
+   <%= f.label "New email address:" %>
+   <%= f.text_field :email %>
+   <br>
+
+   <%= f.label "New password" %>
+   <%= f.password_field :password %>
+   <br>
+
+   <%= f.label "One more time, just to be sure" %>
+   <%= f.password_field :password_confirmation %>
+   <br>
+
+   <%= f.submit "Submit Changes" %>
+
+<% end %>

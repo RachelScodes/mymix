@@ -17,7 +17,6 @@ class MixtapesController < ApplicationController
 
    def create
       @mixtape = Mixtape.new(mixtape_params)
-      binding.pry
       @mixtape.user_id = current_user.id
       @mixtape.save
 
