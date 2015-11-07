@@ -17,7 +17,6 @@ class MixtapesController < ApplicationController
 
    def create
       @mixtape = Mixtape.new(mixtape_params)
-      binding.pry
       @mixtape.user_id = current_user.id
       @mixtape.save
 
@@ -41,7 +40,6 @@ class MixtapesController < ApplicationController
 
    def destroy
       @mixtape = Mixtape.find(params[:id])
-
       # flash.notice = "Mixtape '#{@mixtape.title}' Deleted!"
 
       @mixtape.destroy
@@ -51,7 +49,7 @@ class MixtapesController < ApplicationController
 
    def record_song
 		mixtape = Mixtape.find(params[:id])
-		song = Song.find(params[:song_id])
+		song = Song.find(params[:id])
 		mixtape.record(song)
 		redirect_to mixtape_path(mixtape)
 	end

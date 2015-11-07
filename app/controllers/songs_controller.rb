@@ -13,7 +13,6 @@ class SongsController < ApplicationController
    def create
       @song = Song.new(song_params)
       @song.user_id = current_user.id
-      @song.save
 
       # depending on where the song is created, different actions
       # song made on a mixtape:
@@ -48,7 +47,6 @@ class SongsController < ApplicationController
    def destroy
       @song = Song.find(params[:id])
       # if coming from mixtape, just remove from mixtape
-      binding.pry
       if URI(request.referer).path.match '/mixtapes/'
          mixtape.erase_song(@song)
          redirect_to mixtape_path(mixtape)
