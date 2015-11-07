@@ -91,9 +91,21 @@ h1.mixtape#name {
 
 .song-links {
    float: right;
-   
+
 }
 
 
 .song {
+}
+
+#sidebar {
+   float: right;
+   margin-right: 50px;
+   background-color: darkslateblue;
+   color: white;
+   padding: 35px;
+}
+
+ul#side-links {
+   padding: 0;
 }

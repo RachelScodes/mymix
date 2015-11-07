@@ -1,6 +1,10 @@
 class SongsController < ApplicationController
 
-   # before_filter authorize: :except => [:index, :show]
+   before_filter :require_login, except: [:index, :show]
+
+   def index
+      @songs = Song.order(created_at: :desc)
+   end
 
    def new
       @song = Song.new
@@ -8,33 +12,64 @@ class SongsController < ApplicationController
 
    def create
       @song = Song.new(song_params)
-      @song.save
+      @song.user_id = current_user.id
 
       # depending on where the song is created, different actions
       # song made on a mixtape:
-      if URI(request.referer).path == '/users/:user_id/mixtapes/:mixtape_id'
+		if @song.save && ( URI(request.referer).path.match '/mixtapes/' )
          # join song to mixtape it came from
-         @rec = @song.recordings.new
-         @rec.mixtape_id = params[:mixtape_id]
-         @rec.save
-
-         binding.pry
-         redirect_to mixtape_path(@rec.mixtape_id)
-
-      # song made on its own, not in reference to a mixtape
+         mixtape = Mixtape.find(params[:mixtape_id])
+         mixtape.record_song(@song)
+			flash[] = "You added #{song.title} by #{song.artist} to #{mixtape.name}! Rock on!"
+			redirect_to mixtape_path(mixtape)
+		elsif URI(request.referer).path.match '/mixtapes/'
+         render mixtape_path(mixtape)
+      elsif @song.save
+			redirect_to song_path(@song)
       else
-         redirect_to song_path(@song)
-      end
+         render 'new'
+		end
+	end
+
+   def edit
+      @song = Song.find(params[:id])
+   end
+
+   def update
+      @song = Song.find(params[:id])
+      @song.update(song_params)
    end
 
    def show
       @song = Song.find(params[:id])
    end
 
+   def destroy
+      @song = Song.find(params[:id])
+      # if coming from mixtape, just remove from mixtape
+      binding.pry
+      if URI(request.referer).path.match '/mixtapes/'
+         mixtape.erase_song(@song)
+         redirect_to mixtape_path(mixtape)
+      else
+         mixtapes = Mixtape.where(:song_id == @song.id)
+         mixtape.each { |m| m.erase_song(@song)}
+         @song.destroy
+         redirect_to '/index'
+      end
+   end
+
    private
 
    def song_params
-     params.require(:song).permit(:title, :artist, :album, :date_released, :src_url, :user_id)
+     params.require(:song).permit(
+     :title,
+     :artist,
+     :album,
+     :date_released,
+     :src_url,
+     :user_id
+     )
    end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106051015) do
+ActiveRecord::Schema.define(version: 20151106232813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,10 @@ ActiveRecord::Schema.define(version: 20151106051015) do
     t.string   "img_src",    default: "http://i.dailymail.co.uk/i/pix/2013/01/08/article-2259055-16CF09AC000005DC-960_634x587.jpg"
   end
 
-  create_table "recordings", force: :cascade do |t|
-    t.integer  "song_id"
-    t.integer  "mixtape_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "mixtapes_songs", id: false, force: :cascade do |t|
+    t.integer "mixtape_id"
+    t.integer "song_id"
   end
-
-  add_index "recordings", ["mixtape_id"], name: "index_recordings_on_mixtape_id", using: :btree
-  add_index "recordings", ["song_id"], name: "index_recordings_on_song_id", using: :btree
 
   create_table "songs", force: :cascade do |t|
     t.string   "title"

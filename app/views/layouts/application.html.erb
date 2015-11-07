@@ -8,27 +8,25 @@
 </head>
 <body>
 <div class="nav-top">
-   <%= link_to 'Home', '/index' %>
+   <%= link_to 'Home', '/' %> | <%= link_to 'Mixtapes', mixtapes_path %> | <%= link_to 'Songs', songs_path %> | <%= link_to 'Hall of Fame', '/' %>
 </div>
 
-<div id="sidebar">
-   <% if current_user %>
-     <ul id="side-links">
-
-        <li><%= link_to 'Create a New Mixtape', new_user_mixtape_path(current_user) %></li>
-        <li><%= link_to 'Add Song to the Mix.r Library', new_user_song_path(current_user) %></li>
-     </ul>
-   <% end %>
-</div>
-
-<div id="app">
 <% if current_user %>
-  Signed in as <%= current_user.dj_name %> | <%= link_to "Logout", '/logout' %>
+   <div id="sidebar">
+        <ul id="side-links">
+           <%= "Yo #{current_user.dj_name}!" %>
+           <li><%= link_to 'Create a New Mixtape', new_mixtape_path(current_user) %></li>
+           <li><%= link_to 'Add Song to the Mix.r Library', new_song_path(current_user) %></li>
+           <li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
+           <li><%= link_to "Logout", '/logout' %></li>
+        </ul>
+   </div>
 <% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+  <%= link_to 'Login', '/login' %> | <%= link_to 'Create a DJ Account', '/signup' %>
 <% end %>
 
-<%= yield %>
+<div id="app">
+   <%= yield %>
 </div>
 
 <div class="nav-bot">

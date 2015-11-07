@@ -3,22 +3,29 @@
 <p><%= @mixtape.about %></p>
 <p><%= @mixtape.dedication %></p>
 
-<h3>(<%= @mixtape.songs.size %>) Songs</h3>
+<h3><%= @mixtape.name %> has: (<%= @mixtape.songs.size %>) Songs</h3>
 
 <div class="song-list">
 <%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
 </div>
 
-<%= form_for @recording, url: 'mixtape#edit' do |f| %>
-<%= f.collection_select(:song_id, Song.all, :id, :title) %>
-<%= f.submit %>
-<% end %>
+<div class="song-form" id="mixtape">
+   <h3>Add a Song to <span class="mixtape" id="name"><%= @mixtape.name %>!</span></h3>
 
+   <% if Song.all.length > 1 %>
+      <%= form_for :mixtapes_songs, url: hit_record_mixtape_path do |f| %>
+         <%= f.label "Choose a song from the Mix.r Library" %><br/>
+         <%= f.collection_select(:id, Song.all, :id, :title) %>
+         <% f.hidden_field :mixtape_id, :value => @mixtape.id%>
+         <%= f.submit "Add song to #{@mixtape.name}"%>
+      <% end %>
+   <% end %>
 
-<!-- Add a new song form -->
-<br>
-<%= render partial: 'songs/form' %>
-<br>
+   <!-- Add a new song form -->
+   <br>
+   <%= render partial: 'song_add' %>
+   <br>
+</div>
 
 <h3>Links</h3>
 <%= link_to "<< Back to Mixtapes List", mixtapes_path %>

@@ -1,7 +1,6 @@
 class MixtapesController < ApplicationController
 
-   # before_filter authorize :except => [:index, :show]
-
+   before_filter :require_login, except: [:index, :show]
 
    def index
       @mixtapes = Mixtape.all
@@ -10,7 +9,6 @@ class MixtapesController < ApplicationController
    def show
       @mixtape = Mixtape.find(params[:id])
       @song = Song.new
-      @recording = Recording.new
    end
 
    def new
@@ -49,19 +47,19 @@ class MixtapesController < ApplicationController
       redirect_to mixtapes_path
    end
 
-   def add_image
-      board = Board.find(params[:id])
-      image = Image.find(params[:image_id])
-      board.add_image(image)
-      redirect_to board_path(board)
-   end
+   def record_song
+		mixtape = Mixtape.find(params[:id])
+		song = Song.find(params[:song_id])
+		mixtape.record(song)
+		redirect_to mixtape_path(mixtape)
+	end
 
-   def remove_image
-      board = Board.find(params[:id])
-      image = Image.find(params[:image_id])
-      board.remove_image(image)
-      redirect_to board_path(board)
-   end
+	def erase_song
+		mixtape = Mixtape.find(params[:id])
+		song = Song.find(params[:song_id])
+		mixtape.erase(song)
+		redirect_to mixtape_path(mixtape)
+	end
 
    private
 
