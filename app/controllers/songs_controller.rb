@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
 
-   before_filter :require_login, except: [:index, :show]
+   before_filter :authorize, except: [:index, :show]
 
    def index
       @songs = Song.order(created_at: :desc)
@@ -13,6 +13,7 @@ class SongsController < ApplicationController
    def create
       @song = Song.new(song_params)
       @song.user_id = current_user.id
+      @song.save
 
       # depending on where the song is created, different actions
       # song made on a mixtape:

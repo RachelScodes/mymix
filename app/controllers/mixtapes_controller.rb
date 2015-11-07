@@ -1,6 +1,6 @@
 class MixtapesController < ApplicationController
 
-   before_filter :require_login, except: [:index, :show]
+   before_filter :authorize, except: [:index, :show]
 
    def index
       @mixtapes = Mixtape.all
@@ -17,6 +17,8 @@ class MixtapesController < ApplicationController
 
    def create
       @mixtape = Mixtape.new(mixtape_params)
+      binding.pry
+      @mixtape.user_id = current_user.id
       @mixtape.save
 
       # flash.notice = "Mixtape '#{@mixtape.title}' Created!"
@@ -64,7 +66,7 @@ class MixtapesController < ApplicationController
    private
 
    def mixtape_params
-      params.require(:mixtape).permit(:name, :dedication, :about, :img_src)
+      params.require(:mixtape).permit(:name, :dedication, :about, :img_src, :user_id)
    end
 
 end
