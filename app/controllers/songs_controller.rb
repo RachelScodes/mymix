@@ -13,21 +13,22 @@ class SongsController < ApplicationController
    def create
       @song = Song.new(song_params)
       @song.user_id = current_user.id
+      mixtape = Mixtape.find(params[:mixtape_id])
 
       # depending on where the song is created, different actions
       # song made on a mixtape:
 		if @song.save && ( URI(request.referer).path.match '/mixtapes/' )
-         # join song to mixtape it came from
-         mixtape = Mixtape.find(params[:mixtape_id])
-         mixtape.record_song(@song)
+			# join song to mixtape it came from
+			params[:mixtapes_songs][:id]
+			mixtape.record_song(@song)
 			flash[] = "You added #{song.title} by #{song.artist} to #{mixtape.name}! Rock on!"
 			redirect_to mixtape_path(mixtape)
 		elsif URI(request.referer).path.match '/mixtapes/'
-         render mixtape_path(mixtape)
-      elsif @song.save
+			render mixtape_path(mixtape)
+		elsif @song.save
 			redirect_to song_path(@song)
-      else
-         render 'new'
+		else
+			render 'new'
 		end
 	end
 
@@ -43,7 +44,6 @@ class SongsController < ApplicationController
    end
 
    def show
-      binding.pry
       @song = Song.find(params[:id])
    end
 

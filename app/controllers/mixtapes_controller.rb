@@ -49,7 +49,7 @@ class MixtapesController < ApplicationController
 
    def record_song
 		mixtape = Mixtape.find(params[:id])
-		song = Song.find(params[:song_id])
+		song = Song.find(params[:mixtapes_songs][:song_id])
 		mixtape.record(song)
 		redirect_to mixtape_path(mixtape)
 	end
@@ -64,7 +64,15 @@ class MixtapesController < ApplicationController
    private
 
    def mixtape_params
-      params.require(:mixtape).permit(:name, :dedication, :about, :img_src, :user_id)
+      params.require(:mixtape).permit(
+      :name,
+      :dedication,
+      :about,
+      :img_src,
+      :user_id,
+      :mixtape_songs,
+      :song_id
+      )
    end
 
 end
