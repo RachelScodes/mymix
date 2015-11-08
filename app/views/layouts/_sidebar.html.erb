@@ -1,0 +1,13 @@
+<% if current_user %>
+   <div id="sidebar">
+        <ul id="side-links">
+           <%= "Yo #{current_user.dj_name}!" %>
+           <li><%= link_to 'Create a New Mixtape', new_mixtape_path(current_user) %></li>
+           <li><%= link_to 'Add Song to the Mix.r Library', new_song_path(current_user) %></li>
+           <li><%= link_to 'View Your Profile', user_path(current_user) %></li>
+           <li><%= link_to 'Favorite DJs?', users_path %></li>
+           <li><%= link_to 'Edit Your Profile', edit_user_path(current_user) %></li>
+           <li><%= link_to "Logout", '/logout' %></li>
+        </ul>
+   </div>
+<% end %>

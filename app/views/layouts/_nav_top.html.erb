@@ -1,0 +1,11 @@
+<div class="nav-top">
+   <%= link_to 'Home', '/' %>
+   <%= link_to 'Mixtapes', mixtapes_path %>
+   <%= link_to 'Songs', songs_path %>
+   <%= link_to 'Browse DJs', users_path %>
+   <%= link_to 'Hall of Fame', '/' %>
+   <% if !current_user %>
+     <%= link_to 'Login', '/login', class: 'blink'%>
+     <%= link_to 'Create a DJ Account', '/signup'%></span>
+   <% end %>
+</div>
