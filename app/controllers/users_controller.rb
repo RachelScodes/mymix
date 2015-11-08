@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 
        redirect_to "/users/#{@user.id}"
      else
-        binding.pry
        render 'new'
      end
    end
