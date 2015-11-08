@@ -1,3 +1,4 @@
+<% back_path = URI(request.referer).path %>
 <li class="song">
   <p class="song-info"><span class="italic"><%= @song.title %></span> by <%= @song.artist %></p>
   <p class="song-history">From "<%= @song.album %>", Released <%= @song.date_released %></p>
@@ -8,6 +9,6 @@
 <h2>Song Facts:</h2>
 <p>nothing for now.</p>
 
-<%= link_to "<< Back to Songs List", songs_path %>
+<%= link_to "<< Back", back_path %>
 <%= link_to "Edit Song", edit_song_path(@song) %>
-<%= link_to "Delete Song", song_path(@song), method: :delete, data: {confirm: "Really delete the song?"} %>
+<%= link_to "Delete Song", song_path(:id => @song.id, :path => back_path), method: :delete, data: {confirm: "Really delete the song?"} %>

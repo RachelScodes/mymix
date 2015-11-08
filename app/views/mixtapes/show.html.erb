@@ -1,3 +1,4 @@
+<% back_path = URI(request.referer).path %>
 <h1 class="mixtape" id="name"><%= @mixtape.name %></h1>
 <p><%= image_tag @mixtape.img_src %></p>
 <p><%= @mixtape.about %></p>
@@ -32,7 +33,7 @@
 <% end %>
 
 <h3>Links</h3>
-<%= link_to "<< Back to Mixtapes List", mixtapes_path %>
+<%= link_to "<< Back", back_path %>
 <% if current_user %>
 <%= link_to "Edit Mixtape", edit_mixtape_path(@mixtape) %>
 <%= link_to "Delete Mixtape", mixtape_path(@mixtape), method: :delete, data: {confirm: "Really delete the mixtape?"} %>

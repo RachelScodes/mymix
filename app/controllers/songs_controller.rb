@@ -57,11 +57,14 @@ class SongsController < ApplicationController
    end
 
    def destroy
+      path = params[:path]
+      params.delete(:path)
+
       @song = Song.find(params[:id])
 
       # if song is used on mixtapes, remove:
       if @song.mixtapes.length > 0
-         @song.mixtapes.each { |m| m.erase_song(@song) }
+         @song.mixtapes.each { |m| m.erase(@song) }
       end
 
       @song.destroy
@@ -70,7 +73,7 @@ class SongsController < ApplicationController
       # therefore redirect based on how you got to view
       # if viewed detail from mixtape, go back to that tape
       # if viewed from user page, go back to that page
-      redirect_to @back_url
+      redirect_to path
    end
 
    private

@@ -3,7 +3,7 @@
    <li class="song">
      <p class="song-info"><span class="italic"><%= song.title %></span> by <%= song.artist %></p>
      <p class="song-history">From "<%= song.album %>", Released <%= song.date_released %></p>
-     <%= link_to "Play", song.src_url, :target => "_blank" %>
+     <%= link_to "Play", song.src_url, :target => "_blank" %> | <%= link_to "View Song Details", song_path(song) %>
      <p>Posted <%= distance_of_time_in_words(DateTime.now, song.created_at) %> ago</p>
    </li>
 <% end %>
