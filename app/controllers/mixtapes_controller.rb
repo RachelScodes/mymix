@@ -38,7 +38,6 @@ class MixtapesController < ApplicationController
          flash.notice = "'#{@mixtape.title}' Updated!"
          redirect_to mixtape_path(@mixtape)
       else
-         flash.errors
          render 'show'
       end
    end
@@ -50,7 +49,7 @@ class MixtapesController < ApplicationController
          flash.notice = "'#{@mixtape.title}' Deleted!"
          redirect_to mixtapes_path
       else
-         flash.errors
+
          render 'show'
       end
    end
@@ -64,8 +63,8 @@ class MixtapesController < ApplicationController
       else
 		   mixtape = Mixtape.find(params[:id])
       end
-
 		mixtape.record(song)
+      flash[:error] = mixtape.errors[:whoops]
 		redirect_to mixtape_path(mixtape)
 	end
 
