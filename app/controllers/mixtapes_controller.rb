@@ -48,8 +48,15 @@ class MixtapesController < ApplicationController
    end
 
    def record_song
-		mixtape = Mixtape.find(params[:id])
 		song = Song.find(params[:mixtapes_songs][:song_id])
+
+      # access mixtape correctly depending on referrer:
+      if ( URI(request.referer).path.match '/songs/' )
+         mixtape = Mixtape.find(params[:mixtapes_songs][:mixtape_id])
+      else
+		   mixtape = Mixtape.find(params[:id])
+      end
+
 		mixtape.record(song)
 		redirect_to mixtape_path(mixtape)
 	end

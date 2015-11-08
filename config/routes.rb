@@ -19,7 +19,7 @@ Rails.application.routes.draw do
    resources :mixtapes do
       member do
          post 'record_song'
-         post 'erase_song'
+         get 'erase_song'
       end
    end
 

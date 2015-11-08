@@ -11,34 +11,36 @@ class SongsController < ApplicationController
    end
 
    def create
-      # depending on where the song is created
-      # different stuff happens
-
-      # coming from mixtape, sanitize all the things!
+      # different actions depending wher song was created
+      # coming from mixtape, sanitize params!
       if params[:song][:mixtape_id]
-         mixtape = Mixtape.find(params[:song][:mixtape_id])
+         @mixtape = Mixtape.find(params[:song][:mixtape_id])
          params[:song].delete(:mixtape_id)
       end
 
       @song = Song.new(song_params)
       @song.user_id = current_user.id
 
-      # coming from a mixtape:
-		if ( URI(request.referer).path.match '/mixtapes/' ) && @song.save
-			# join song to mixtape it came from
-			mixtape.record(@song)
-			# flash[] = "You added #{song.title} by #{song.artist} to #{mixtape.name}! Rock on!"
-			redirect_to mixtape_path(mixtape)
-      # coming from mixtape, with errors:
-		elsif URI(request.referer).path.match '/mixtapes/'
-			render 'mixtapes/show'
-      # song made as standalone
-		elsif @song.save
-			redirect_to song_path(@song)
-		else
-			render 'new'
-		end
+      # verify redirects and actions based on URL referrer
+      add_from_mix(@mixtape,@song)
 	end
+
+   def add_from_mix(mixtape,song)
+      # coming from a mixtape:
+      if ( URI(request.referer).path.match '/mixtapes/' ) && song.save
+         mixtape.record(song) # record song to mixtape it came from
+         # flash[] = "You added #{song.title} by #{song.artist} to #{mixtape.name}! Rock on!"
+         redirect_to mixtape_path(mixtape) #success
+      elsif URI(request.referer).path.match '/mixtapes/'
+         render 'mixtapes/show' # unsuccessful
+
+      # song made as standalone
+      elsif song.save
+         redirect_to song_path(song) # success
+      else
+         render 'new' # song made as standalone, unsuccessful
+      end
+   end
 
    def edit
       @song = Song.find(params[:id])
@@ -56,8 +58,8 @@ class SongsController < ApplicationController
    end
 
    def destroy
-      path = params[:path]
-      params.delete(:path)
+      path = params[:path] # get path for redirect
+      params.delete(:path) # sanitize params
 
       @song = Song.find(params[:id])
 
@@ -69,9 +71,7 @@ class SongsController < ApplicationController
       @song.destroy
 
       # can only destroy song from song detail view
-      # therefore redirect based on how you got to view
-      # if viewed detail from mixtape, go back to that tape
-      # if viewed from user page, go back to that page
+      # redirect based on how you got to view
       redirect_to path
    end
 

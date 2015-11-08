@@ -1,5 +1,5 @@
 <div class="song">
   <p class="song-info"><span class="italic"><%= song.title %></span> by <%= song.artist %>
-  <span class="song-links"><%= link_to "Play", song.src_url %> | <%= link_to "Song Detail", song_path(song) %> ...Posted <%= distance_of_time_in_words(DateTime.now, song.created_at) %> ago</p>
+  <span class="song-links"><%= link_to "Play", song.src_url %> <%= link_to "Info", song_path(song) %> <%= link_to "Erase from Mixtape", erase_song_mixtape_path(:id => @mixtape.id, :song_id => song) %> ...Posted <%= distance_of_time_in_words(DateTime.now, song.created_at) %> ago</p>
 
 </div>

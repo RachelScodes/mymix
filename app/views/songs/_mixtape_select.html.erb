@@ -1,0 +1,6 @@
+<%= form_for :mixtapes_songs, url: record_song_mixtape_path do |f| %>
+   <%= f.label "Add this song to a mixtape:" %><br/>
+   <%= f.collection_select(:mixtape_id, Mixtape.all, :id, :name) %>
+   <%= f.hidden_field :song_id, :value => @song.id%>
+   <%= f.submit "Add song to a Mixtape!"%>
+<% end %>
