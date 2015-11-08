@@ -1,0 +1,7 @@
+<% if noun && noun.errors.messages.length > 0 %>
+   <div class="errors">
+      <% noun.errors.full_messages.each do |error_msg| %>
+         <p class="error"><%= error_msg %><p>
+      <% end %>
+   </div>
+<% end %>

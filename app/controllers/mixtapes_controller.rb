@@ -18,11 +18,14 @@ class MixtapesController < ApplicationController
    def create
       @mixtape = Mixtape.new(mixtape_params)
       @mixtape.user_id = current_user.id
-      @mixtape.save
 
-      # flash.notice = "Mixtape '#{@mixtape.title}' Created!"
-
-      redirect_to mixtape_path(@mixtape)
+      if @mixtape.save
+         flash.notice = "#{@mixtape.title}!? Nice! Let's add some songs!"
+         redirect_to mixtape_path(@mixtape)
+      else
+         flash.errors
+         render 'new'
+      end
    end
 
    def edit
@@ -31,20 +34,26 @@ class MixtapesController < ApplicationController
 
    def update
       @mixtape = Mixtape.find(params[:id])
-      @mixtape.update(mixtape_params)
 
-      # flash.notice = "Mixtape '#{@mixtape.title}' Updated!"
-
-      redirect_to mixtape_path(@mixtape)
+      if @mixtape.update(mixtape_params)
+         flash.notice = "'#{@mixtape.title}' Updated!"
+         redirect_to mixtape_path(@mixtape)
+      else
+         flash.errors
+         render 'show'
+      end
    end
 
    def destroy
       @mixtape = Mixtape.find(params[:id])
-      # flash.notice = "Mixtape '#{@mixtape.title}' Deleted!"
 
-      @mixtape.destroy
-
-      redirect_to mixtapes_path
+      if @mixtape.destroy
+         flash.notice = "'#{@mixtape.title}' Deleted!"
+         redirect_to mixtapes_path
+      else
+         flash.errors
+         render 'show'
+      end
    end
 
    def record_song

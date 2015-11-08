@@ -28,10 +28,8 @@ class UsersController < ApplicationController
 
        redirect_to "/users/#{@user.id}"
      else
-
-
-
-       redirect_to '/signup'
+        binding.pry
+       render 'new'
      end
    end
 

@@ -1,5 +1,7 @@
 <h1>You can be a DJ too!</h1>
 
+<%= render partial: 'layouts/errors', :locals => { :noun => @user } %>
+
 <%= form_for :user, :html => {:class => 'create_user'}, url: '/users' do |f| %>
    <%= f.label "What's your DJ name, yo?" %>
    <%= f.text_field :dj_name %>

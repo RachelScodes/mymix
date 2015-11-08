@@ -3,4 +3,16 @@ class User < ActiveRecord::Base
 
    has_many :mixtapes
    has_many :songs
+
+   # can't be blank
+   validates :dj_name, :email, presence: true
+
+   # one account per email address.
+   validates :email, uniqueness: {
+      case_sensitive: false,
+      message: "is already associated with an account." }
+
+   # string@string.string format for email
+   validates :email, format: { with: /\A\S+@.+\.\S+\z/,
+      message: "Your email should be in foo@bar.com format" }
 end
