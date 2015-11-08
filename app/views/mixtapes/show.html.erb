@@ -18,23 +18,28 @@
    <%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
 </div>
 
-<%# logged in user can add and create songs %>
+
 <% if current_user %>
+   <%# display errors from adding songs %>
+   <% if @song %>
+      <%= render partial: 'layouts/errors_flash', :locals => { :noun => flash[:errors] } %>
+   <% end %>
+
+   <%# logged in user can add and create songs %>
    <div class="song-form" id="mixtape">
       <h3>Add a Song to <span class="mixtape" id="name"><%= @mixtape.name %>!</span></h3>
-
-      <% if Song.all.length > 1 %>
-         <%= render partial: 'song_select' %>
-      <% end %>
-
-      <%= render partial: 'song_add' %>
+      <%# select from library via drop-down %>
+      <%= render partial: 'mixtapes/song_select' %>
+      <%# or add new song %>
+      <%= render partial: 'mixtapes/song_add' %>
    </div>
-<%# otherwise user must log in to view those options %>
+
 <% else %>
+   <%# must log in to contribute %>
    <%= render partial: 'layouts/hey_dj' %> to add songs to this Mixtape.
 <% end %>
 
-<h3>Links</h3>
+<h3>Actions</h3>
    <%= link_to "<< Back", back_path %>
 <% if current_user %>
    <%= link_to "Edit Mixtape", edit_mixtape_path(@mixtape) %>

@@ -8,7 +8,8 @@ class Mixtape < ActiveRecord::Base
       message: "is taken buddy. Mix it up!" }
 
    def record(song)
-      self.songs.push(song)
+      binding.pry
+      self.songs = (self.songs + [song]).uniq
    end
 
    def erase(song)

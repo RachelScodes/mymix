@@ -1,0 +1,11 @@
+<% if noun && noun.length > 0 %>
+   <div class="errors">
+      <% noun.each do |obj,errors| %>
+         <p class="error"><%= obj.capitalize %>:
+            <% errors.each do |m| %>
+            <li><%= m %></li>
+            <% end %>
+         </p>
+      <% end %>
+   </div>
+<% end %>

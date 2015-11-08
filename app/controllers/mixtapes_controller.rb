@@ -86,7 +86,8 @@ class MixtapesController < ApplicationController
       :img_src,
       :user_id,
       :mixtape_songs,
-      :song_id
+      :song_id,
+      :song
       )
    end
 

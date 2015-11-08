@@ -32,8 +32,7 @@ class SongsController < ApplicationController
          # flash[] = "You added #{song.title} by #{song.artist} to #{mixtape.name}! Rock on!"
          redirect_to mixtape_path(mixtape) #success
       elsif URI(request.referer).path.match '/mixtapes/'
-         render 'mixtapes/show' # unsuccessful
-
+         redirect_to :back, flash: {errors: song.errors}
       # song made as standalone
       elsif song.save
          redirect_to song_path(song) # success
