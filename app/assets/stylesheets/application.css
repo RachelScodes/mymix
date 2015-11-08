@@ -317,3 +317,11 @@ div.user img {
    overflow: hidden;
    position: center center;
 }
+
+.flash-notices {
+   position: relative;
+   top: 60px;
+   width: 500px;
+   margin: 0 auto;
+   border: 2px solid white;
+}

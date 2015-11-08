@@ -19,9 +19,8 @@
       <%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
    </div>
 
-
    <% if current_user %>
-
+   <div id="add-song-divider"></div>
       <%# logged in user can add and create songs %>
       <div class="song-form" id="mixtape">
          <h3>Add a Song to <span class="mixtape" id="name"><%= @mixtape.name %>!</span></h3>
