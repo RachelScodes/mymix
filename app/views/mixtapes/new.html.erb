@@ -1,4 +1,9 @@
 <h3>Create a Mixtape</h3>
 
-<%= render partial: 'layouts/errors', :locals => { :noun => @mixtape } %>
-<%= render partial: 'form' %>
+<% if current_user %>
+   <%= render partial: 'layouts/errors', :locals => { :noun => @mixtape } %>
+   <%= render partial: 'form' %>
+<% else %>
+   <%# Nag for login %>
+   <%= render partial: 'layouts/hey_dj' %> to add and edit your own Mixtapes SNEAKY!!</p>
+<% end %>
