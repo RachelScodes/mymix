@@ -1,0 +1,10 @@
+<% if !flash.notice.nil? %>
+<p class="flash-notices"><%= flash.notice %>
+   <%#different action links depending on success notices %>
+   <%=link_to('Now let\'s add some songs!', :anchor => "add-song-divider") if flash.notice.end_with?('Nice! ')%>
+   <%=link_to('Keep it going, DJ!', :anchor => "add-song-divider") if flash.notice.end_with?('mix.d in! ')%>
+   <%=link_to('Add a new Mixtape?', new_mixtape_path) if flash.notice.end_with?('e Deleted! ')%>
+   <%=link_to('Add a new Song to Mix.r?', new_song_path) if flash.notice.end_with?('g Deleted! ')%>
+   <%=link_to('Add it to a different mixtape?', mixtapes_path) if flash.notice.end_with?('from this Mixtape. ')%>
+</p>
+<% end %>

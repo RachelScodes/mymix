@@ -20,7 +20,7 @@ class MixtapesController < ApplicationController
       @mixtape.user_id = current_user.id
 
       if @mixtape.save
-         flash.notice = "#{@mixtape.title}!? Nice! Let's add some songs!"
+         flash.notice = "#{@mixtape.name}!? Nice! "
          redirect_to mixtape_path(@mixtape)
       else
          render 'new'
@@ -29,16 +29,16 @@ class MixtapesController < ApplicationController
 
    def edit
       @mixtape = Mixtape.find(params[:id])
+   if current_user.id != @mixtape.user_id
    end
 
    def update
       @mixtape = Mixtape.find(params[:id])
 
       if @mixtape.update(mixtape_params)
-         flash.notice = "'#{@mixtape.title}' Updated!"
+         flash.notice = "'#{@mixtape.name}' Updated! Mixin' up a storm 'ova hea'! "
          redirect_to mixtape_path(@mixtape)
       else
-         flash.errors
          render 'show'
       end
    end
@@ -47,34 +47,36 @@ class MixtapesController < ApplicationController
       @mixtape = Mixtape.find(params[:id])
 
       if @mixtape.destroy
-         flash.notice = "'#{@mixtape.title}' Deleted!"
+         flash.notice = "'#{@mixtape.name}' Mixtape Deleted! "
          redirect_to mixtapes_path
       else
-         flash.errors
          render 'show'
       end
    end
 
    def record_song
-		song = Song.find(params[:mixtapes_songs][:song_id])
+      song = Song.find(params[:mixtapes_songs][:song_id])
 
       # access mixtape correctly depending on referrer:
       if ( URI(request.referer).path.match '/songs/' )
          mixtape = Mixtape.find(params[:mixtapes_songs][:mixtape_id])
       else
-		   mixtape = Mixtape.find(params[:id])
+         mixtape = Mixtape.find(params[:id])
       end
 
-		mixtape.record(song)
-		redirect_to mixtape_path(mixtape)
-	end
+      mixtape.record(song)
+      flash[:error] = mixtape.errors[:whoops]
+      flash.notice = "#{song.title} mix.d in! " if flash[:error] == []
+      redirect_to mixtape_path(mixtape)
+   end
 
-	def erase_song
-		mixtape = Mixtape.find(params[:id])
-		song = Song.find(params[:song_id])
-		mixtape.erase(song)
-		redirect_to mixtape_path(mixtape)
-	end
+   def erase_song
+      mixtape = Mixtape.find(params[:id])
+      mixtape.erase(Song.find(params[:song_id]))
+
+      flash.notice = "#{song.name} erased from this Mixtape. "
+      redirect_to mixtape_path(mixtape)
+   end
 
    private
 

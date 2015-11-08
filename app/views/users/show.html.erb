@@ -6,7 +6,11 @@
 </div>
 
 <div class="user-collection">
-<h2>Your Collection</h2>
+   <% if @user.id != current_user.id %>
+   <h2><%= @user.dj_name %>'s Collection</h2>
+<% else %>
+   <h2>Your Collection</h2>
+<% end %>
 
 <h3>Display Mixtapes</h3>
 <%= render partial: 'mixtapes/display', collection: @user.mixtapes  %>
@@ -21,4 +25,6 @@
 <h3>Links</h3>
 <%= link_to "<< Back", back_path %>
 <%= link_to "DJ List", users_path %>
+<% if !current_user %>
 <p><%= render partial: 'layouts/hey_dj' %> to start Mix.ing!</p>
+<% end %>

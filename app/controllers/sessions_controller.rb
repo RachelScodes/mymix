@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
    def new
+      # login form
    end
 
    def create
@@ -8,12 +9,10 @@ class SessionsController < ApplicationController
 
       # If the user exists AND the password entered is correct.
       if @user && @user.authenticate(params[:password])
-         # Save the user id inside the browser cookie. This is how we keep the user
-         # logged in when they navigate around our website.
+         # Save the user id inside the browser cookie.
          session[:user_id] = @user.id
          redirect_to '/'
       else
-         # If user's login doesn't work, send them back to the login form.
          flash.now[:error] = "Something's not right with that Email/Password combo bro."
          render 'new'
       end
@@ -23,9 +22,9 @@ class SessionsController < ApplicationController
       session[:user_id] = nil
       redirect_to '/'
    end
-
-   def store_location
-      @back_url = URI(request.referer).path
-   end
+   # 
+   # def store_location
+   #    @back_url = URI(request.referer).path
+   # end
 
 end
