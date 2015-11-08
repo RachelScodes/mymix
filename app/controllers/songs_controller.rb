@@ -31,7 +31,6 @@ class SongsController < ApplicationController
 			redirect_to mixtape_path(mixtape)
       # coming from mixtape, with errors:
 		elsif URI(request.referer).path.match '/mixtapes/'
-         binding.pry
 			render 'mixtapes/show'
       # song made as standalone
 		elsif @song.save
