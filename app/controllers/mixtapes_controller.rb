@@ -29,6 +29,7 @@ class MixtapesController < ApplicationController
 
    def edit
       @mixtape = Mixtape.find(params[:id])
+   if current_user.id != @mixtape.user_id
    end
 
    def update

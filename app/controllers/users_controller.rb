@@ -21,15 +21,12 @@ class UsersController < ApplicationController
 
    def create
       @user = User.new(user_params)
-     if @user.save
-       session[:user_id] = @user.id
-
-       flash.notice = "Welcome to Mix.r #{@user.dj_name}! You will use this name to login."
-
-       redirect_to "/users/#{@user.id}"
-     else
-       render 'new'
-     end
+      if @user.save
+         flash.notice = "Welcome to Mix.r #{@user.dj_name}! You will use this name to login."
+         redirect_to "/users/#{@user.id}"
+      else
+         render 'new'
+      end
    end
 
    def edit
@@ -37,15 +34,20 @@ class UsersController < ApplicationController
    end
 
    def update
-      user = User.find(params[:id])
-      user.update(user_params)
-
-      # flash.notice = "Mixtape '#{@mixtape.title}' Updated!"
-
-      redirect_to user_path(user)
+      @user = User.find(params[:id])
+      if @user.id != current_user.id
+         flash.notice = "I don't know how you got here but EDIT YOUR OWN PROFILE! Jeez. Control freak much?"
+         redirect_to user_path(current_user)
+      elsif (@user.id == current_user.id) && @user.update(user_params)
+         render user_path(@user)
+      else
+         flash.notice = "Your profile is updated!"
+         redirect_to user_path(@user)
+      end
    end
 
    def show
+      binding.pry
       @user = User.find(params[:id])
       @mixtapes = @user.mixtapes.order(created_at: :desc)
       @songs = @user.songs.order(created_at: :desc)

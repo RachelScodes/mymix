@@ -1,26 +1,28 @@
 <h1>Edit your profile:</h1>
+<% if @user.id != current_user.id %>
+   <p> You can only edit <%= link_to 'your own profile!', user_path(current_user) %> Duh! </p>
+<% else %>
+   <%= form_for :user do |f| %>
+      <%= f.label "What's your new DJ name, yo?" %>
+      <%= f.text_field :dj_name %>
+      <br>
 
-<%= form_for :user do |f| %>
-   <%= f.label "What's your new DJ name, yo?" %>
-   <%= f.text_field :dj_name %>
-   <br>
+      <%= f.label "Enter a new avatar" %>
+      <%= f.text_field :avatar %>
+      <br>
 
-   <%= f.label "Enter a new avatar" %>
-   <%= f.text_field :avatar %>
-   <br>
+      <%= f.label "New email address:" %>
+      <%= f.text_field :email %>
+      <br>
 
-   <%= f.label "New email address:" %>
-   <%= f.text_field :email %>
-   <br>
+      <%= f.label "New password" %>
+      <%= f.password_field :password %>
+      <br>
 
-   <%= f.label "New password" %>
-   <%= f.password_field :password %>
-   <br>
+      <%= f.label "One more time, just to be sure" %>
+      <%= f.password_field :password_confirmation %>
+      <br>
 
-   <%= f.label "One more time, just to be sure" %>
-   <%= f.password_field :password_confirmation %>
-   <br>
-
-   <%= f.submit "Submit Changes" %>
-
+      <%= f.submit "Submit Changes" %>
+   <% end %>
 <% end %>
