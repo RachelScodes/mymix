@@ -47,7 +47,6 @@ class UsersController < ApplicationController
    end
 
    def show
-      binding.pry
       @user = User.find(params[:id])
       @mixtapes = @user.mixtapes.order(created_at: :desc)
       @songs = @user.songs.order(created_at: :desc)
