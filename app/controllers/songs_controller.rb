@@ -21,6 +21,7 @@ class SongsController < ApplicationController
       @song = Song.new(song_params)
       @song.user_id = current_user.id
 
+      # verify redirects and actions based on URL referrer
       add_from_mix(@mixtape,@song)
 	end
 

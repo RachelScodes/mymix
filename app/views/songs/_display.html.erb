@@ -1,5 +1,6 @@
 <div id="songs">
    <% @songs.each do |song| %>
+   <% user = User.find(song.user_id) %>
    <div class="song">
      <p class="song-info"><span class="italic"><%= song.title %></span> by <%= song.artist %></p>
 

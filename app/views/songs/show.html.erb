@@ -15,12 +15,16 @@
 <h2>Song Facts:</h2>
 <p>nothing for now.</p>
 
-<h2>Options:</h2>
-<%= link_to "<< Back", back_path %>
+<div class=".song-actions">
+   <h2>Actions:</h2>
+   <%= link_to "<< Back", back_path %>
 
-<% if current_user %>
-   <%= link_to "Edit Song", edit_song_path(@song) %>
-   <%= link_to "Delete Song", song_path(:id => @song.id, :path => back_path), method: :delete, data: {confirm: "Really delete the song?"} %>
-<% else %>
-   <%= render partial: 'layouts/hey_dj' %> to add and edit your own songs!
-<% end %>
+   <% if current_user %>
+      <% if Mixtape.all.length > 1 %><%= render partial: 'mixtape_select' %>
+      <% end %>
+      <%= link_to "Edit Song", edit_song_path(@song) %>
+      <%= link_to "Delete Song", song_path(:id => @song.id, :path => back_path), method: :delete, data: {confirm: "Really delete the song?"} %>
+   <% else %>
+      <%= render partial: 'layouts/hey_dj' %> to add and edit your own songs!
+   <% end %>
+</div>
