@@ -9,11 +9,16 @@
 <h2>Your Collection</h2>
 
 <h3>Display Mixtapes</h3>
-<p>mixtapes here</p><br>
+<%= render partial: 'mixtapes/display', collection: @user.mixtapes  %>
+<br>
 <h3>Display Songs</h3>
-<p>songs here</p>
+<%= render partial: 'songs/display', collection: @user.songs  %>
+</p>
 </div>
+
+
 
 <h3>Links</h3>
 <%= link_to "<< Back", back_path %>
 <%= link_to "DJ List", users_path %>
+<p><%= render partial: 'layouts/hey_dj' %> to start Mix.ing!</p>

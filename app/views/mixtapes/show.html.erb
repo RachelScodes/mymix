@@ -1,40 +1,37 @@
 <% back_path = URI(request.referer).path %>
-<h1 class="mixtape" id="name"><%= @mixtape.name %></h1>
-<p><%= image_tag @mixtape.img_src %></p>
-<p><%= @mixtape.about %></p>
-<p><%= @mixtape.dedication %></p>
 
-<h3><%= @mixtape.name %> has: (<%= @mixtape.songs.size %>) Songs</h3>
+<div class="one">
+   <h1 class="mixtape" id="name"><%= @mixtape.name %></h1>
+   <p><%= image_tag @mixtape.img_src %></p>
+</div>
+
+<div class="two">
+   <p><%= @mixtape.about %></p>
+   <p><%= @mixtape.dedication %></p>
+</div>
+
+<div class="spine">
+   <h3><%= @mixtape.name %> has: (<%= @mixtape.songs.size %>) Songs</h3>
+</div>
 
 <div class="song-list">
-<%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
+   <%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
 </div>
 
 <% if current_user %>
-<div class="song-form" id="mixtape">
-   <h3>Add a Song to <span class="mixtape" id="name"><%= @mixtape.name %>!</span></h3>
+   <div class="song-form" id="mixtape">
+      <h3>Add a Song to <span class="mixtape" id="name"><%= @mixtape.name %>!</span></h3>
 
-   <% if Song.all.length > 1 %>
-      <%= form_for :mixtapes_songs, url: record_song_mixtape_path do |f| %>
-         <%= f.label "Choose a song from the Mix.r Library" %><br/>
-         <%= f.collection_select(:song_id, Song.all, :id, :title) %>
-         <%= f.hidden_field :mixtape_id, :value => @mixtape.id%>
-         <%= f.submit "Add song to #{@mixtape.name}"%>
-      <% end %>
-   <% end %>
-
-   <!-- Add a new song form -->
-   <br>
-   <%= render partial: 'song_add' %>
-   <br>
-</div>
+      <% if Song.all.length > 1 %><%= render partial: 'song_select' %><% end %>
+      <%= render partial: 'song_add' %>
+   </div>
 <% else %>
-   Hey DJ, <%= link_to 'Login', '/login' %> or <%= link_to 'Create a DJ Account', '/signup' %> to add songs to this Mixtape.
+   <%= render partial: 'layouts/hey_dj' %> to add songs to this Mixtape.
 <% end %>
 
 <h3>Links</h3>
-<%= link_to "<< Back", back_path %>
+   <%= link_to "<< Back", back_path %>
 <% if current_user %>
-<%= link_to "Edit Mixtape", edit_mixtape_path(@mixtape) %>
-<%= link_to "Delete Mixtape", mixtape_path(@mixtape), method: :delete, data: {confirm: "Really delete the mixtape?"} %>
+   <%= link_to "Edit Mixtape", edit_mixtape_path(@mixtape) %>
+   <%= link_to "Delete Mixtape", mixtape_path(@mixtape), method: :delete, data: {confirm: "Really delete the mixtape?"} %>
 <% end %>
