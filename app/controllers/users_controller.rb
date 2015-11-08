@@ -23,16 +23,23 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
      if @user.save
        session[:user_id] = @user.id
-       redirect_to "/users/#{@user.id}"
+       redirect_to "/users/#{@user.id}", notice: "Welcome to Mix.r #{@user.dj_name}! You will use this name to login."
      else
        redirect_to '/signup'
      end
    end
 
    def edit
+      @user = User.find(params[:id])
    end
 
    def update
+      user = User.find(params[:id])
+      user.update(user_params)
+
+      # flash.notice = "Mixtape '#{@mixtape.title}' Updated!"
+
+      redirect_to user_path(user)
    end
 
    def show
