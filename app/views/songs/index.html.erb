@@ -3,7 +3,7 @@
 <%= render partial: 'songs/display' %>
 
 <% if current_user %>
-<%= link_to "Add a Song to Mix.r Library", new_song_path, class: "new_song" %>
+   <%= link_to "Add a Song to Mix.r Library", new_song_path, class: "new", id: "song" %>
 <% else %>
-   <%= render partial: 'layouts/hey_dj' %> to add a new song to the Mix.r Library.
+   <%= render partial: 'layouts/hey_dj' %> to add a new song to the Mix.r Library.</p>
 <% end %>

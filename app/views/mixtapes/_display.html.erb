@@ -1,9 +1,10 @@
-<ul id="mixtapes">
+<div class="mixtapes">
    <% @mixtapes.each do |mixtape| %>
-     <li>
-       <%= link_to mixtape.name, mixtape_path(mixtape), class: 'mixtape_name', id: "mixtape_#{mixtape.id}" %>
-       <p>(<%= mixtape.songs.length %>) Songs about: <%= mixtape.about %></p>
-       <p>Posted <%= distance_of_time_in_words(DateTime.now, mixtape.created_at) %> ago</p>
-     </li>
+      <% user = User.find(mixtape.user_id) %>
+      <div class="tapes">
+         <h1><%= link_to mixtape.name, mixtape_path(mixtape), class: 'mixtape_name', id: "mixtape_#{mixtape.id}" %></h1>
+         <p>(<%= mixtape.songs.length %>) Songs about: <%= mixtape.about %></p>
+         <p>Posted <%= distance_of_time_in_words(DateTime.now, mixtape.created_at) %> ago by <%= link_to user.dj_name, user_path(user) %></p>
+      </div>
    <% end %>
-</ul>
+</div>

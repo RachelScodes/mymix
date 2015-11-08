@@ -3,7 +3,7 @@
 <%= render partial: 'mixtapes/display' %>
 
 <% if current_user %>
-   <%= link_to "Create a New Mixtape", new_mixtape_path, class: "new_mixtape" %>
+   <%= link_to "Create a New Mixtape", new_mixtape_path, class: "new", id: "mixtape" %>
 <% else %>
-   <%= render partial: 'layouts/hey_dj' %> to record your own Mixtape.
+   <%= render partial: 'layouts/hey_dj' %> to record your own Mixtape.</p>
 <% end %>

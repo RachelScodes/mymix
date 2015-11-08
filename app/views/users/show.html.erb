@@ -6,18 +6,23 @@
 </div>
 
 <div class="user-collection">
-   <% if @user.id != current_user.id %>
-   <h2><%= @user.dj_name %>'s Collection</h2>
-<% else %>
-   <h2>Your Collection</h2>
-<% end %>
+<% binding.pry %>
+   <% if current_user && (@user.id == current_user.id) %>
+      <h2>Your Collection</h2>
+   <% else %>
+      <h2><%= @user.dj_name %>'s Collection</h2>
+   <% end %>
 
-<h3>Display Mixtapes</h3>
-<%= render partial: 'mixtapes/display', collection: @user.mixtapes  %>
-<br>
-<h3>Display Songs</h3>
-<%= render partial: 'songs/display', collection: @user.songs  %>
-</p>
+   <div class="mixtapes-list">
+      <h3>Display Mixtapes</h3>
+      <%= render partial: 'my_mixtapes', :locals => { :collection => @user.mixtapes } %>
+   </div>
+
+   <div class="song-list">
+      <h3>Display Songs</h3>
+      <%= render partial: 'my_songs', :locals => { :collection => @user.songs }  %>
+      </p>
+   </div>
 </div>
 
 

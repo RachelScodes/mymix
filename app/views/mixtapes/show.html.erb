@@ -15,7 +15,7 @@
       <h3><%= @mixtape.name %> has: (<%= @mixtape.songs.size %>) Songs</h3>
    </div>
 
-   <div class="song-list">
+   <div class="mixtape-song-list">
       <%= render partial: 'mixtapes/song', collection: @mixtape.songs %>
    </div>
 

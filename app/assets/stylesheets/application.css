@@ -203,7 +203,7 @@ h1.mixtape#name {
    text-align: center;
 }
 
-.song-list {
+.mixtape-song-list {
    font-size: 15px;
    background-image: url('http://blog.undr.com/2011/01/2011_01_15_16_30_21.jpg');
    background-repeat: repeat-y;
@@ -216,7 +216,7 @@ h1.mixtape#name {
     background-size: cover;
 }
 
-.song-list p {
+.mixtape-song-list p {
   -webkit-transform: rotate(-0.5deg);
   -moz-transform: rotate(-0.5deg);
   -o-transform: rotate(-0.5deg);
