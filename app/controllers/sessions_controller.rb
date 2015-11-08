@@ -14,14 +14,14 @@ class SessionsController < ApplicationController
          redirect_to '/'
       else
          # If user's login doesn't work, send them back to the login form.
-         flash.now[:error] = "password and email dont match"
-         render 'sessions/new'
+         flash.now[:error] = "Something's not right with that Email/Password combo bro."
+         render 'new'
       end
    end
 
    def destroy
       session[:user_id] = nil
-      redirect_to '/login'
+      redirect_to '/'
    end
 
    def store_location

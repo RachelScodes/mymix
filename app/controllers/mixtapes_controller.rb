@@ -23,7 +23,6 @@ class MixtapesController < ApplicationController
          flash.notice = "#{@mixtape.title}!? Nice! Let's add some songs!"
          redirect_to mixtape_path(@mixtape)
       else
-         flash.errors
          render 'new'
       end
    end

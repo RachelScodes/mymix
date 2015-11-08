@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
    # can't be blank
    validates :dj_name, :email, presence: true
 
+   # there can only be one #{dj_name}!
+   validates :dj_name, uniqueness: {
+      case_sensitive: false,
+      message: "belongs to someone else, and there can only be one."
+   }
+
    # one account per email address.
    validates :email, uniqueness: {
       case_sensitive: false,
