@@ -1,6 +1,6 @@
 <% session[:store_location] %>
 
-<%= form_for [@song ] do |f| %>
+<%= form_for [@song] do |f| %>
    <p>
       <%= f.label :title, "Shake it Off" %><br/>
       <%= f.text_field :title %>
@@ -20,7 +20,7 @@
       <%= f.label :src_url, "URL" %><br/>
       <%= f.text_field :src_url %>
    </p>
-   <%# f.hidden_field :mixtape_id, add: @mixtape.id %>
+      <%= f.hidden_field :mixtape_id, :value => @mixtape.id %>
    <p>
      <%= f.submit "Add to #{@mixtape.name}" %>
    </p>

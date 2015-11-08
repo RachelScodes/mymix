@@ -20,10 +20,120 @@ body {
    background-image: url(http://silviahartmann.com/background-tile-art/images/black_woven_seamless_tile.jpg);
 }
 
+.nav-top,
+.nav-bot {
+   min-height: 50px;
+   margin: 0 auto;
+
+   padding: 0 50px;
+
+   box-shadow: inset 0 0 18px rgb(14, 0, 20);
+}
+
+.nav-top {
+   min-width: 700px;
+   max-width: 900px;
+   position: fixed;
+   left: 0;
+   right: 0;
+   /*-webkit-transform: translate3d(0, 0, 0);*/
+
+   background-color: lavender;
+   border-radius: 100px 10px 100px 10px;
+   z-index: 5;
+
+   line-height: 47px;
+   text-align: left;
+   font-family: 'Codystar';
+}
+
+a {
+   text-decoration: none;
+}
+
+a+a {
+   padding-left: 15px;
+   margin-left: 15px;
+   border-left: 2px dotted black;
+}
+
+.you-are-here {
+   text-decoration: overline;
+}
+
+#logo {
+   float: left;
+   background-color: black;
+   border: 6px solid lavender;
+   border-radius: 5px 5px 30px 30px;
+   width: 111px;
+   color: lavender;
+   position: relative;
+   top: 51px;
+   z-index: 2;
+   padding: 14px;
+}
+
+@keyframes logodance {
+   0%  {
+         background-color: black;
+         border-radius: 5px 5px 30px 30px;
+         border-color: lavender;
+         color: lavender;
+       }
+   25% {
+         background-color: purple;
+         border-radius: 30px 5px 5px 30px;
+         border-color: beige;
+         color: beige;
+      }
+   50% {
+         background-color: cornflowerblue;
+         border-radius: 30px 30px 5px 5px;
+         border-color: bisque;
+         color: bisque;
+      }
+   75% {
+         background-color: green;
+         border-radius: 5px 30px 30px 5px;
+         border-color: indianred;
+         color: indianred;
+      }
+   100% {
+         background-color: yellow;
+         border-radius: 5px 5px 30px 30px;
+         border-color: purple;
+         color: purple;
+      }
+}
+
+#logo:hover{
+   animation-name: logodance;
+   animation-duration: 0.2s;
+   animation-timing-function: linear;
+   animation-iteration-count: 4;
+   animation-direction: alternate;
+}
+
+#icon {
+   font-size: 30px;
+}
+.whoosh {
+   font-family: 'Faster One';
+}
+
+#tagline {
+   font-size: 12px;
+}
+
 #app{
    width: 800px;
-   margin-left: 100px;
+   margin: 0 auto;
    background-color: white;
+   position: relative;
+   top: 60px;
+    border-radius: 14px;
+    padding: 30px;
 }
 
 .create_user {
@@ -120,5 +230,26 @@ ul#side-links {
 .play iframe {
    display:block;
    width:100%;
-   height:300%
+   height:300%;
+}
+
+.blink {
+  animation: blinker 2s linear infinite;
+  color: #223A3A;
+}
+
+@keyframes blinker {
+  50% { opacity: 0.0; }
+}
+
+
+.nav-bot {
+   min-width: 500px;
+
+   border-radius: 10px 100px 10px 100px;
+   background-color: black;
+   box-shadow: inset 0 0 18px lightgrey;
+
+   text-align: center;
+   color: beige;
 }

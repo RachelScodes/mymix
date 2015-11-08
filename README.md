@@ -102,25 +102,25 @@ Mixtape is an app for music makers and lovers alike, to share their favorite son
 ##Playing with Mix.r
 ###User Stories:
 
-  1. [ ] Browse Songs and Mixtapes as a guest from the homepage
+  1. [x] Browse Songs and Mixtapes as a guest from the homepage
   1. [ ] Search for Songs or Mixes by tag?
   1. [ ] View search results?
-  1. [ ] View user profiles
-  1. [ ] View user contributions
+  1. [x] View user profiles
+  1. [x] View user contributions
   1. [ ] Browse Top-Rated Mixes and Songs
-  1. [ ] Play songs? God forbid?
-  1. [ ] Create Account, Log in
+  1. [x] Play songs? God forbid?
+  1. [x] Create Account, Log in
 
  Once logged in:
-  1. [ ] Create & Edit Mixtapes
-  1. [ ] Create & Edit songs
+  1. [x] Create & Edit Mixtapes
+  1. [x] Create & Edit songs
   1. [ ] Add/Remove songs on Mixtapes
   1. [ ] Dedicate a Mixtape to another User
   1. [ ] Upvote/Downvote Songs and Mixtapes
   1. [ ] See your dedications
-  1. [ ] View Song details, including "Facts"
+  1. [x] View Song details, including "Facts"
   1. [ ] Add "Facts" to Songs
-  1. [ ] Logout
+  1. [x] Logout
 
 
 ##Copyright Notice

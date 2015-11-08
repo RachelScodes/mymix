@@ -5,5 +5,5 @@
 <% if current_user %>
 <%= link_to "Add a Song to Mix.r Library", new_song_path, class: "new_song" %>
 <% else %>
-   Hey DJ, <%= link_to 'Login', '/login' %> or <%= link_to 'Create a DJ Account', '/signup' %> to add a new song to the Mix.r Library.
+   <%= render partial: 'layouts/hey_dj' %> to add a new song to the Mix.r Library.
 <% end %>

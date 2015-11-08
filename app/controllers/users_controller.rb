@@ -23,8 +23,14 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
      if @user.save
        session[:user_id] = @user.id
+
+       flash.notice = "Welcome to Mix.r #{@user.dj_name}! You will use this name to login."
+
        redirect_to "/users/#{@user.id}"
      else
+
+
+
        redirect_to '/signup'
      end
    end
@@ -44,6 +50,8 @@ class UsersController < ApplicationController
 
    def show
       @user = User.find(params[:id])
+      @mixtapes = @user.mixtapes.order(created_at: :desc)
+      @songs = @user.songs.order(created_at: :desc)
    end
 
    private

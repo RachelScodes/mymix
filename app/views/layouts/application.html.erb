@@ -7,31 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="nav-top">
-   <%= link_to 'Home', '/' %> | <%= link_to 'Mixtapes', mixtapes_path %> | <%= link_to 'Songs', songs_path %> | <%= link_to 'Browse DJs', users_path %> | <%= link_to 'Hall of Fame', '/' %>
+<div id="logo">
+   <h1 id="icon">Mix<span class="whoosh">.r</span></h1>
+   <p id="tagline">mix it up</p>
 </div>
-
-<% if current_user %>
-   <div id="sidebar">
-        <ul id="side-links">
-           <%= "Yo #{current_user.dj_name}!" %>
-           <li><%= link_to 'Create a New Mixtape', new_mixtape_path(current_user) %></li>
-           <li><%= link_to 'Add Song to the Mix.r Library', new_song_path(current_user) %></li>
-           <li><%= link_to 'View Your Profile', user_path(current_user) %></li>
-           <li><%= link_to 'Favorite DJs?', users_path %></li>
-           <li><%= link_to 'Edit Your Profile', edit_user_path(current_user) %></li>
-           <li><%= link_to "Logout", '/logout' %></li>
-        </ul>
-   </div>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Create a DJ Account', '/signup' %>
-<% end %>
+<%= render partial: 'layouts/nav_top' %>
+<%= render partial: 'layouts/sidebar' %>
 
 <div id="app">
    <%= yield %>
 </div>
 
 <div class="nav-bot">
+   Dear interwebs,
+   <br>Layout designed FROM FUCKING SCRATCH by Rachel Smyth. (c) 2015
+   <br>Sincerely,
+   <br>templates are cheating.
 </div>
 </body>
 </html>
