@@ -401,6 +401,11 @@ img {
    color: indianred;
    font-size: 23px;
    line-height: 23px;
+
+   font-size: 23px;
+   line-height: 78px;
+   background-image: url('https://raw.githubusercontent.com/RachelScodes/mymix/addErrorMessages/app/assets/images/cassette-spine2.png');
+   height: 82px;
 }
 
 .mixtape-song-list{
