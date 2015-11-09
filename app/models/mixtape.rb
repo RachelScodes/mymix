@@ -14,7 +14,8 @@ class Mixtape < ActiveRecord::Base
 
    def record(song)
       starting = self.songs.length
-      self.songs << song
+      if self.songs = (self.songs + [song]).uniq
+      end
       ending = self.songs.length
 
       if ending == starting
