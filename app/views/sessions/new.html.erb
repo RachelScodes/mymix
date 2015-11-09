@@ -4,8 +4,11 @@
 
       <%# show login errors %>
       <div class="errors">
-         <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, class: 'error', id: 'error-detail' %>
+         <% binding.pry %>
+         <% if !flash[:error].nil? && (flash[:error] != []) %>
+            <% flash.error.each do |name, msg| %>
+               <%= content_tag :div, msg, class: 'error', id: 'error-detail' %>
+            <% end %>
          <% end %>
       </div>
 

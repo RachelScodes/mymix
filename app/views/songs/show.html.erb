@@ -6,7 +6,7 @@
   <p class="song-history">From "<%= @song.album %>", Released <%= @song.date_released %></p>
   <p class="song-stats">Posted <%= distance_of_time_in_words(DateTime.now, @song.created_at) %> ago
 
-  <%= link_to "Play", @song.src_url, :target => "_blank" %>
+  <%= link_to "Play", @song.audio, :target => "_blank" %>
   <p>Posted <%= distance_of_time_in_words(DateTime.now, @song.created_at) %> ago</p>
       <p>by <%= link_to user.dj_name, user_path(user) %></p>
 </div>
@@ -31,11 +31,12 @@
 <div class="actions-bot">
    <h2>Actions:</h2>
    <%= link_to "<< Back", back_path %>
-   <% if current_user %>
-      <%= link_to "Edit Song", edit_song_path(@song) %>
-      <%= link_to "Delete Song", song_path(:id => @song.id, :path => back_path), method: :delete, data: {confirm: "Really delete the song?"} %>
-   <% else %>
+   <% if !current_user %>
       <%# Nag for login %>
       <%= render partial: 'layouts/hey_dj' %> to add and edit your own songs!</p>
+   <% elsif current_user.id == @song.user_id %>
+      <%# Creator can edit/delete %>
+      <%= link_to "Edit Song", edit_song_path(@song) %>
+      <%= link_to "Delete Song", song_path(:id => @song.id, :path => back_path), method: :delete, data: {confirm: "Really delete the song?"} %>
    <% end %>
 </div>

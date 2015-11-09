@@ -205,7 +205,7 @@ h1.mixtape#name {
 
 .mixtape-song-list {
    font-size: 15px;
-   background-image: url('http://blog.undr.com/2011/01/2011_01_15_16_30_21.jpg');
+   background-image: url('https://raw.githubusercontent.com/RachelScodes/mymix/addErrorMessages/app/assets/images/song-list.png');
    background-repeat: repeat-y;
     width: 744px;
    padding-top: 260px;
@@ -231,10 +231,6 @@ h1.mixtape#name {
 .song-links {
    float: right;
 
-}
-
-
-.song {
 }
 
 #sidebar {
@@ -272,16 +268,35 @@ ul#side-links {
 }
 
 .play {
-   width: 41px;
-   height: 22px;
-   border: 2px solid green;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
    overflow: hidden;
 }
 
+.play-button {
+   display: block;
+   float: left;
+   position: absolute;
+   width: inherit;
+   height: inherit;
+   z-index: 1000;
+   background-image: url('http://4.bp.blogspot.com/-Z9sYLvG7w18/Umf073gdalI/AAAAAAAAHJs/pTiXx6TxTWI/s1600/play.png');
+   background-position: center center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   pointer-events: none;
+   border: 2px solid purple;
+   border-radius: 50%;
+}
+
 .play iframe {
+   position: relative;
    display:block;
-   width:100%;
-   height:300%;
+   width:50%;
+   margin: 0 auto;
+   height:200%;
+   border-radius: 50%;
 }
 
 .blink {
@@ -324,4 +339,81 @@ div.user img {
    width: 500px;
    margin: 0 auto;
    border: 2px solid white;
+}
+
+/* MIXTAPE DETAIL VIEW */
+h1.mixtape#name {
+    background-image: url('http://idacanada.com/magazine/issue-3/images/analogdigital_03.png');
+    background-repeat: no-repeat;
+    height: 190px;
+    width: 317px;
+    line-height: 83px;
+    font-family: Covered by your grace;
+    font-family: Rock salt;
+    font-family: Permanent marker;
+    text-align: center;
+    background-size: contain;
+    color: indianred;
+    display: inline-block;
+    float: left;
+}
+
+.one p{
+   display: inline-block;
+   /* float: right; */
+   display: inline-block;
+   width: 185px;
+   /* float: right; */
+   position: relative;
+}
+
+img {
+   display: inline-block;
+   width: 185px;
+   /* float: right; */
+   position: relative;
+}
+
+.two {
+    background-image: url('https://raw.githubusercontent.com/RachelScodes/mymix/addErrorMessages/app/assets/images/cassette-spine.png');
+    width: 500px;
+    background-size: cover;
+    height: 139px;
+    display: inline-block;
+}
+
+.two > p {
+    font-family: permanent marker;
+    color: black;
+    display: inline-block;
+    width: 250px;
+    position: relative;
+}
+
+.spine {
+   display: block;
+   width: 500px;
+}
+
+.spine h3 {
+   text-align: center;
+   font-family: permanent marker;
+   color: indianred;
+   font-size: 23px;
+   line-height: 23px;
+
+   font-size: 23px;
+   line-height: 78px;
+   background-image: url('https://raw.githubusercontent.com/RachelScodes/mymix/addErrorMessages/app/assets/images/cassette-spine2.png');
+   height: 82px;
+}
+
+.mixtape-song-list{
+   width: 460px;
+   background-size: contain;
+}
+
+p.flash-notices {
+   position: relative;
+   top: -30px;
 }
