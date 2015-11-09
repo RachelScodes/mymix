@@ -1,12 +1,11 @@
 <% back_path = URI(request.referer).path %>
 
-<div class="user" id="<%= @user.id %>">
+<div class="user" id="details">
    <h1>DJ: <%= @user.dj_name %></h1>
-   <%= image_tag @user.avatar %>
+   <%= image_tag @user.avatar, class: "user-avatar" %>
 </div>
 
 <div class="user-collection">
-<% binding.pry %>
    <% if current_user && (@user.id == current_user.id) %>
       <h2>Your Collection</h2>
    <% else %>
@@ -27,9 +26,13 @@
 
 
 
-<h3>Links</h3>
-<%= link_to "<< Back", back_path %>
-<%= link_to "DJ List", users_path %>
-<% if !current_user %>
-<p><%= render partial: 'layouts/hey_dj' %> to start Mix.ing!</p>
-<% end %>
+<%# Navigation %>
+<div class="actions-bot">
+   <h2>Actions:</h2>
+   <%= link_to "<< Back", back_path %>
+   <%= link_to "DJ List", users_path %>
+   <% if !current_user %>
+      <%# Nag for login %>
+      <%= render partial: 'layouts/hey_dj' %> to start Mix.ing!</p>
+   <% end %>
+</div>

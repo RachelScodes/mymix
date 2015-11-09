@@ -1,17 +1,25 @@
-<h1>Login</h1>
-<%= form_tag '/login' do %>
-  <% flash.each do |name,  msg| %>
-    <%= content_tag :div, msg, class: name %>
-  <% end %>
+<div id="login">
+   <h1>Login</h1>
+   <%= form_tag '/login' do %>
 
-  <br>
-  <%= label_tag "dj_name" %>
-  <%= text_field_tag :dj_name %>
-  <br>
+      <%# show login errors %>
+      <div class="errors">
+         <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, class: 'error', id: 'error-detail' %>
+         <% end %>
+      </div>
 
-  <%= label_tag "password" %>
-  <%= password_field_tag :password %>
-  <br>
-  <%= submit_tag "Submit" %>
+      <%# You know the drill here %>
+      <div class="field">
+         <%= label_tag "dj_name" %>
+         <%= text_field_tag :dj_name %>
+      </div>
 
-<% end %>
+      <div class="field">
+         <%= label_tag "password" %>
+         <%= password_field_tag :password %>
+      </div>
+
+      <%= submit_tag "Submit" %>
+   <% end %>
+</div>

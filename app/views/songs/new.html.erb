@@ -1,2 +1,8 @@
 <%= render partial: 'layouts/errors', :locals => { :noun => @song } %>
-<%= render partial: 'form' %>
+
+<% if current_user %>
+   <%= render partial: 'form' %>
+<% else %>
+   <%# Nag for login %>
+   <%= render partial: 'layouts/hey_dj' %></p>
+<% end %>

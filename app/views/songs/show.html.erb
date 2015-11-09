@@ -12,19 +12,30 @@
 </div>
 
 
-<h2>Song Facts:</h2>
-<p>nothing for now.</p>
+<!-- <h2>Song Facts:</h2>
+<p>nothing for now.</p> -->
 
-<div class=".song-actions">
+<div class="song-actions">
+   <% if current_user %>
+      <%# Add song to mixtape via drop down menu %>
+      <% if Mixtape.all.length > 1 %>
+         <%= render partial: 'mixtape_select' %>
+      <% end %>
+   <% else %>
+      <%# Nag for login %>
+      <%= render partial: 'layouts/hey_dj' %> to add this song to a Mixtape of your own!</p>
+   <% end %>
+</div>
+
+<%# Navigation %>
+<div class="actions-bot">
    <h2>Actions:</h2>
    <%= link_to "<< Back", back_path %>
-
    <% if current_user %>
-      <% if Mixtape.all.length > 1 %><%= render partial: 'mixtape_select' %>
-      <% end %>
       <%= link_to "Edit Song", edit_song_path(@song) %>
       <%= link_to "Delete Song", song_path(:id => @song.id, :path => back_path), method: :delete, data: {confirm: "Really delete the song?"} %>
    <% else %>
-      <%= render partial: 'layouts/hey_dj' %> to add and edit your own songs!
+      <%# Nag for login %>
+      <%= render partial: 'layouts/hey_dj' %> to add and edit your own songs!</p>
    <% end %>
 </div>
