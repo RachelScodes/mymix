@@ -11,35 +11,22 @@ class SongsController < ApplicationController
    end
 
    def create
-      # different actions depending wher song was created
-      # coming from mixtape, sanitize params!
+      binding.pry
+      # Different actions depending where song was created
+      # Coming from mixtape, sanitize params!
       if params[:song][:mixtape_id]
-         @mixtape = Mixtape.find(params[:song][:mixtape_id])
+         if params[:song][:mixtape_id] != "42"
+            @mixtape = Mixtape.find(params[:song][:mixtape_id])
+         end
          params[:song].delete(:mixtape_id)
       end
 
       @song = Song.new(song_params)
       @song.user_id = current_user.id
 
-      # verify redirects and actions based on URL referrer
-      add_from_mix(@mixtape,@song)
+      # Verify redirects and actions based on URL referrer
+      add_from_mix(URI(request.referer).path,@mixtape,@song)
 	end
-
-   def add_from_mix(mixtape,song)
-      # coming from a mixtape:
-      if ( URI(request.referer).path.match '/mixtapes/' ) && song.save
-         mixtape.record(song) # record song to mixtape it came from
-         # flash[] = "You added #{song.title} by #{song.artist} to #{mixtape.name}! Rock on!"
-         redirect_to mixtape_path(mixtape) #success
-      elsif URI(request.referer).path.match '/mixtapes/'
-         redirect_to :back, flash: {errors: song.errors}
-      # song made as standalone
-      elsif song.save
-         redirect_to song_path(song) # success
-      else
-         render 'new' # song made as standalone, unsuccessful
-      end
-   end
 
    def edit
       @song = Song.find(params[:id])
@@ -76,13 +63,30 @@ class SongsController < ApplicationController
 
    private
 
+   def add_from_mix(path,mixtape,song)
+      # Coming from a mixtape:
+      if ( path.match '/mixtapes/' ) && song.save
+         binding.pry
+         mixtape.record(song) # record song to mixtape it came from
+         # flash[] = "You added #{song.title} by #{song.artist} to #{mixtape.name}! Rock on!"
+         redirect_to path #success
+      elsif path.match '/mixtapes/'
+         redirect_to path, flash: {errors: song.errors}
+      # song made as standalone
+      elsif song.save
+         redirect_to song_path(song) # success
+      else
+         render 'new' # song made as standalone, unsuccessful
+      end
+   end
+
    def song_params
      params.require(:song).permit(
      :title,
      :artist,
      :album,
      :date_released,
-     :src_url,
+     :audio,
      :user_id,
      :mixtapes_songs,
      :mixtape_id,

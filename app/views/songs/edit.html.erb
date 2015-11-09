@@ -1,7 +1,20 @@
 <h3>Edit <%= @song.title %></h3>
 
-<% if current_user %>
+<%# Creator can edit %>
+<% if current_user && current_user.id == @song.user_id %>
    <%= render partial: 'form' %>
+
+<%# But not creepers %>
+<% elsif current_user %>
+   <p class="errors" id="error-details">You can only edit Songs you have added.</p>
+   <div class="actions-bot">
+      <%# Navigation/Actions if logged in %>
+      <h3>Actions</h3>
+      <%= link_to "<< Back", back_path %>
+      <%= link_to "Add a Song to Mix.r Library", new_song_path, class: "new", id: "song" %>
+   </div>
+
+<%# Or lurkers %>
 <% else %>
    <%# Nag for login %>
    <%= render partial: 'layouts/hey_dj' %>wtf how do you even?</p>

@@ -2,7 +2,7 @@
    <div class="create" id="mixtape">
       <%= form_for [ @mixtape ] do |f| %>
         <p>
-          <%= f.label "What's the name of this Mix?" %><br/>
+          <%= f.label "What's the name of this Mix? *" %><br/>
           <%= f.text_field :name %>
         </p>
 
@@ -12,12 +12,12 @@
         </p>
 
         <p>
-          <%= f.label :about %><br/>
+          <%= f.label "What's your theme?" %><br/>
           <%= f.text_area :about %>
         </p>
 
         <p>
-          <%= f.label "Paste new URL" %><br/>
+          <%= f.label "Paste a new Image URL" %><br/>
           <%= f.text_field :img_src %>
         </p>
 

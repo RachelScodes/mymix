@@ -1,4 +1,5 @@
 <h1>You can be a DJ too!</h1>
+
 <% if !current_user %>
    <%= render partial: 'layouts/errors', :locals => { :noun => @user } %>
 
@@ -27,5 +28,5 @@
 <% else %>
    <p>Hey, looks like you're logged in as
    <%= current_user.dj_name %>. Did you want to
-   <%= link_to 'edit your profile?', edit_user_path(current_user) %>
+   <%= link_to 'edit your profile?', edit_user_path(current_user) %> instead?</p>
 <% end %>
