@@ -35,7 +35,7 @@ Markdown Template from: **[Placehold.r](https://github.com/DBrodsky90/Placeholdr
 
 
 ##Entity Relationship Diagram
-![ERD](https://raw.githubusercontent.com/RachelScodes/mymix/5918c65dd2bad25c6e9852fa86960e0fa1a3f85c/erd.pdf)
+![ERD](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/erd-current.png)
 
 ##What is a Mixtape?
 
