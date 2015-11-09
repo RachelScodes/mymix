@@ -1,5 +1,5 @@
 #Mix.r
-![logo](url)
+![Mixr-Logo](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/mixr-logo.png)
 Heroku Link: https://rachelscodes-mixr.herokuapp.com/
 
 ##Table of Contents
@@ -9,7 +9,8 @@ Heroku Link: https://rachelscodes-mixr.herokuapp.com/
 4. [Overview](#what-is-a-mixtape)
 5. [Routes](#routes)
 6. [User Stores: How to use Mix.r](#user-stories)
-7. [Copyright Notice](#copyright-notice)
+7. [Wireframes/Flow diagrams](#wireframes)
+8. [Copyright Notice](#copyright-notice)
 
 
 ##Coded and Designed By:
@@ -17,7 +18,7 @@ Heroku Link: https://rachelscodes-mixr.herokuapp.com/
 **Rachel Smyth**
 Github: [RachelScodes](https://github.com/RachelScodes)
 
-Markdown Template from: ** [Placehold.r](https://github.com/DBrodsky90/Placeholdr_app) **
+Markdown Template from: **[Placehold.r](https://github.com/DBrodsky90/Placeholdr_app)**
 
 **Instructional Leads:** [Syed Salahuddin](), [Colin Hart]()
 
@@ -29,10 +30,12 @@ Markdown Template from: ** [Placehold.r](https://github.com/DBrodsky90/Placehold
 2. [Rails](https://github.com/rails/rails)
 3. [PostgreSQL](https://github.com/postgres/postgres)
 4. [gem 'bcrypt'](https://github.com/codahale/bcrypt-ruby)
+5. [pixlr.com](https://pixlr.com/editor/) Image editor
+6. Google fonts
 
 
 ##Entity Relationship Diagram
-![ERD](https://raw.githubusercontent.com/RachelScodes/mymix/5918c65dd2bad25c6e9852fa86960e0fa1a3f85c/erd.pdf)
+![ERD](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/erd-current.png)
 
 ##What is a Mixtape?
 
@@ -45,47 +48,26 @@ Mixtape is an app for music makers and lovers alike, to share their favorite son
 
 |Prefix	 | Verb	 | URI Pattern	 | Controller#Action   |
 |---------|--------|--------------|-------------------   |
+| root    | GET    | /  |welcome#index|
 | login	 | GET	 | /login(.:format)	 | sessions#new |
 | 	 | POST	 | /login(.:format)	 | sessions#create  |
 | logout	 | GET	 | /logout(.:format)	 | sessions#destroy |
 | signup	 | GET	 | /signup(.:format)	 | users#new  |
 | users	 | POST	 | /users(.:format)	 | users#create   |
-| user_mixtapes	 | GET	 | /users/:user_id/mixtapes(.:format)	 | mixtapes#index   |
-| 	 | POST	 | /users/:user_id/mixtapes(.:format)	 | mixtapes#create  |
-| new_user_mixtape	 | GET	 | /users/:user_id/mixtapes/new(.:format)	 | mixtapes#new |
-| edit_user_mixtape	 | GET	 | /users/:user_id/mixtapes/:id/edit(.:format)	 | mixtapes#edit   |
-| user_mixtape	 | GET	 | /users/:user_id/mixtapes/:id(.:format)	 | mixtapes#show |
-| 	 | PATCH	 | /users/:user_id/mixtapes/:id(.:format)	 | mixtapes#update   |
-| 	 | PUT	 | /users/:user_id/mixtapes/:id(.:format)	 | mixtapes#update  |
-| 	 | DELETE	 | /users/:user_id/mixtapes/:id(.:format)	 | mixtapes#destroy |
-| user_songs	 | GET	 | /users/:user_id/songs(.:format)	 | songs#index   |
-| 	 | POST	 | /users/:user_id/songs(.:format)	 | songs#create  |
-| new_user_song	 | GET	 | /users/:user_id/songs/new(.:format)	 | songs#new |
-| edit_user_song	 | GET	 | /users/:user_id/songs/:id/edit(.:format)	 | songs#edit   |
-| user_song	 | GET	 | /users/:user_id/songs/:id(.:format)	 | songs#show |
-| 	 | PATCH	 | /users/:user_id/songs/:id(.:format)	 | songs#update   |
-| 	 | PUT	 | /users/:user_id/songs/:id(.:format)	 | songs#update  |
-| 	 | DELETE	 | /users/:user_id/songs/:id(.:format)	 | songs#destroy |
-| 	 | GET	 | /users(.:format)	 | users#index |
-| 	 | POST	 | /users(.:format)	 | users#create  |
+| 	 | GET	 | /users(.:format)	 | users#index   |
+| users	 | POST	 | /users(.:format)	 | users#create   | I have no idea why this is listed twice |
 | new_user	 | GET	 | /users/new(.:format)	 | users#new   |
 | edit_user	 | GET	 | /users/:id/edit(.:format)	 | users#edit  |
 | user	 | GET	 | /users/:id(.:format)	 | users#show   |
 | 	 | PATCH	 | /users/:id(.:format)	 | users#update   |
 | 	 | PUT	 | /users/:id(.:format)	 | users#update  |
 | 	 | DELETE	 | /users/:id(.:format)	 | users#destroy |
-| mixtape_songs	 | GET	 | /mixtapes/:mixtape_id/songs(.:format)	 | songs#index   |
-| 	 | POST	 | /mixtapes/:mixtape_id/songs(.:format)	 | songs#create  |
-| new_mixtape_song	 | GET	 | /mixtapes/:mixtape_id/songs/new(.:format)	 | songs#new |
-| edit_mixtape_song	 | GET	 | /mixtapes/:mixtape_id/songs/:id/edit(.:format)	 | songs#edit   |
-| mixtape_song	 | GET	 | /mixtapes/:mixtape_id/songs/:id(.:format)	 | songs#show |
-| 	 | PATCH	 | /mixtapes/:mixtape_id/songs/:id(.:format)	 | songs#update   |
-| 	 | PUT	 | /mixtapes/:mixtape_id/songs/:id(.:format)	 | songs#update  |
-| 	 | DELETE	 | /mixtapes/:mixtape_id/songs/:id(.:format)	 | songs#destroy |
+|record_song_mixtape | POST  |  /mixtapes/:id/record_song(.:format) | mixtapes#record_song |
+| erase_song_mixtape | GET  |   /mixtapes/:id/erase_song(.:format) | mixtapes#erase_song |
 | mixtapes	 | GET	 | /mixtapes(.:format)	 | mixtapes#index  |
 | 	 | POST	 | /mixtapes(.:format)	 | mixtapes#create  |
 | new_mixtape	 | GET	 | /mixtapes/new(.:format)	 | mixtapes#new   |
-| edit_mixtape	 | GET	 | /mixtapes/:id/edit(.:format)	 | mixtapes#edit  |
+| edit_mixtape	 | GET	 | /mixtapes/:id/edit(.:format)	| mixtapes#edit |
 | mixtape	 | GET	 | /mixtapes/:id(.:format)	 | mixtapes#show   |
 | 	 | PATCH	 | /mixtapes/:id(.:format)	 | mixtapes#update   |
 | 	 | PUT	 | /mixtapes/:id(.:format)	 | mixtapes#update  |
@@ -102,26 +84,34 @@ Mixtape is an app for music makers and lovers alike, to share their favorite son
 ##Playing with Mix.r
 ###User Stories:
 
-  1. [x] Browse Songs and Mixtapes as a guest from the homepage
-  1. [ ] Search for Songs or Mixes by tag?
-  1. [ ] View search results?
-  1. [x] View user profiles
-  1. [x] View user contributions
-  1. [ ] Browse Top-Rated Mixes and Songs
-  1. [x] Play songs? God forbid?
-  1. [x] Create Account, Log in
+As a user I can enjoy two experiences: as a guest or as a creator.
 
- Once logged in:
-  1. [x] Create & Edit Mixtapes
-  1. [x] Create & Edit songs
-  1. [ ] Add/Remove songs on Mixtapes
-  1. [ ] Dedicate a Mixtape to another User
-  1. [ ] Upvote/Downvote Songs and Mixtapes
-  1. [ ] See your dedications
-  1. [x] View Song details, including "Facts"
-  1. [ ] Add "Facts" to Songs
+As a guest, I can:
+  1. [x] Browse Songs and Mixtapes
+  1. [x] View user profiles and contributions
+  1. [x] Play songs?
+  1. [x] Create an Account,
+  1. [x] Log in/log out
+
+Once logged in, I can:
+  1. [x] Do all of the above, plus:
+  1. [x] Create & Edit Mixtapes and Songs
+  1. [x] Add/Remove songs on Mixtapes
+  1. [x] Add/Remove songs from Mix.r Library
+  1. [x] View Song & Mixtape details
+  1. [x] Delete content I have created
+  1. [x] View and edit Account details
+  1. [ ] Delete account
   1. [x] Logout
 
+Things I don't want to do as a user:
+  1. [x] Create content as someone else
+  1. [x] Edit or delete someone else's content
+  1. [x] Edit or delete someone else's account
+
+##Wireframes
+![Wireframe](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/Wireframes.png)
+![Flowchart](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/mixr-flow.png)
 
 ##Copyright Notice
 The images and music used in this app are for an educational project only and not for mass distribution or for profit.
