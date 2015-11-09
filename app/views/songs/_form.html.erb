@@ -1,29 +1,35 @@
 <%= form_for [ @song ] do |f| %>
-   <p>
-      <%= f.label "Title. Ex: Shake it Off*" %><br/>
+   <p class="field">
+      <%= f.label "Title, Ex: Shake it Off*" %><br/>
       <%= f.text_field :title %>
    </p>
-   <p>
-      <%= f.label "Artist. Ex: Dolly Parton*" %><br/>
+
+   <p class="field">
+      <%= f.label "Artist, Ex: Dolly Parton*" %><br/>
       <%= f.text_field :artist %>
    </p>
-      <%= f.label "Album. EX: Thriller" %><br/>
+
+   <p class="field">
+      <%= f.label "Album, Ex: Thriller" %><br/>
       <%= f.text_field :album %>
    </p>
-   <p>
+   <p class="field" id="select">
       <%= f.label "Date of Album/Single Release date." %><br/>
       <%= f.date_select :date_released, prompt: true, start_year: 2015, end_year: 1900, discard_day: true, include_blank: true %>
    </p>
-   <p>
-      <%= f.label "Youtube or Soundcloud URL*" %><br/>
+   <p class="field" id="audio">
+      <%= f.label "Audio = Youtube URL *" %><br/>
       <%= f.text_field :audio %>
+      <p id="youtube-instructions">
+         Just place the regular old youtube url from the address bar! into the field above!
+      </p>
    </p>
-   <p>
-      <%binding.pry%>
-      <%= f.label "Add this song to a mixtape:" %><br/>
-      <%= f.collection_select(:mixtape_id, Mixtape.all, :id, :name, {prompt: "Select a mixtape"}) %>
-   </p>
-   <p>
+   <!-- <p class="field" id="select"> -->
+      <%# f.label "Add this song to a mixtape:" %>
+      <!-- <br> -->
+      <%# f.collection_select(:mixtape_id, Mixtape.all, :id, :name, {prompt: "Select a mixtape"}) %>
+   <!-- </p> -->
+   <p class="field" id="submit">
       <%= f.submit "Submit Song to Mix.r Library" %>
    </p>
 <% end %>

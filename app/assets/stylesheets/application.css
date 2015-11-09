@@ -233,10 +233,6 @@ h1.mixtape#name {
 
 }
 
-
-.song {
-}
-
 #sidebar {
    float: right;
    margin-right: 50px;
@@ -272,16 +268,35 @@ ul#side-links {
 }
 
 .play {
-   width: 41px;
-   height: 22px;
-   border: 2px solid green;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
    overflow: hidden;
 }
 
+.play-button {
+   display: block;
+   float: left;
+   position: absolute;
+   width: inherit;
+   height: inherit;
+   z-index: 1000;
+   background-image: url('http://4.bp.blogspot.com/-Z9sYLvG7w18/Umf073gdalI/AAAAAAAAHJs/pTiXx6TxTWI/s1600/play.png');
+   background-position: center center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   pointer-events: none;
+   border: 2px solid purple;
+   border-radius: 50%;
+}
+
 .play iframe {
+   position: relative;
    display:block;
-   width:100%;
-   height:300%;
+   width:50%;
+   margin: 0 auto;
+   height:200%;
+   border-radius: 50%;
 }
 
 .blink {
