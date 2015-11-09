@@ -1,5 +1,5 @@
 #Mix.r
-![Mixr-Logo](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/mixr-logo.png)
+![Mixr-Logo](https://raw.githubusercontent.com/RachelScodes/mymix/master/mixr-logo.png)
 Heroku Link: https://rachelscodes-mixr.herokuapp.com/
 
 ##Table of Contents
