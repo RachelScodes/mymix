@@ -12,17 +12,16 @@
    </p>
    <p>
       <%= f.label "Date of Album/Single Release date." %><br/>
-      <%= f.date_select :date_released %>
+      <%= f.date_select :date_released, prompt: true, start_year: 2015, end_year: 1900, discard_day: true, include_blank: true %>
    </p>
    <p>
       <%= f.label "Youtube or Soundcloud URL*" %><br/>
       <%= f.text_field :audio %>
    </p>
    <p>
+      <%binding.pry%>
       <%= f.label "Add this song to a mixtape:" %><br/>
-      <% mixtapes = Mixtape.all; %>
-      <% mixtapes << Mixtape.new(:id => 42, :name => 'Not now') %>
-      <%= f.collection_select(:mixtape_id, mixtapes, :id, :name, {:selected => 42}) %>
+      <%= f.collection_select(:mixtape_id, Mixtape.all, :id, :name, {prompt: "Select a mixtape"}) %>
    </p>
    <p>
       <%= f.submit "Submit Song to Mix.r Library" %>
