@@ -46,7 +46,7 @@ Mixtape is an app for music makers and lovers alike, to share their favorite son
 
 
 ##Routes
-![Routes]()
+![Routes](https://raw.githubusercontent.com/RachelScodes/mymix/master/Screen%20Shot%202015-11-09%20at%201.09.09%20PM.png)
 
 |Prefix	 | Verb	 | URI Pattern	 | Controller#Action   |
 |---------|--------|--------------|-------------------   |
