@@ -1,28 +1,32 @@
-<%= form_for [ @mixtape ] do |f| %>
-  <p>
-    <%= f.label "What's the name of this Mix?" %><br/>
-    <%= f.text_field :name %>
-  </p>
+<% if current_user %>
+   <div class="create" id="mixtape">
+      <%= form_for [ @mixtape ] do |f| %>
+        <p>
+          <%= f.label "What's the name of this Mix?" %><br/>
+          <%= f.text_field :name %>
+        </p>
 
-  <p>
-    <%= f.label "Is this dedicated to a special someone?" %><br/>
-    <%= f.text_field :dedication %>
-  </p>
+        <p>
+          <%= f.label "Is this dedicated to a special someone?" %><br/>
+          <%= f.text_field :dedication %>
+        </p>
 
-  <p>
-    <%= f.label :about %><br/>
-    <%= f.text_area :about %>
-  </p>
+        <p>
+          <%= f.label :about %><br/>
+          <%= f.text_area :about %>
+        </p>
 
-  <p>
-    <%= f.label "Paste new URL" %><br/>
-    <%= f.text_field :img_src %>
-  </p>
+        <p>
+          <%= f.label "Paste new URL" %><br/>
+          <%= f.text_field :img_src %>
+        </p>
 
-  <p>Current Image:
-     <br><%= image_tag @mixtape.img_src %>
-  </p>
-  <p>
-    <%= f.submit 'Submit' %>
-  </p>
+        <p>Current Image:
+           <br><%= image_tag @mixtape.img_src %>
+        </p>
+        <p>
+          <%= f.submit 'Submit' %>
+        </p>
+      <% end %>
+   </div>
 <% end %>

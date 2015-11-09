@@ -1,8 +1,10 @@
-<% if Song.all.length > 1 %>
-   <%= form_for :mixtapes_songs, url: record_song_mixtape_path do |f| %>
-      <%= f.label "Choose a song from the Mix.r Library" %><br/>
-      <%= f.collection_select(:song_id, Song.all, :id, :title) %>
-      <%= f.hidden_field :mixtape_id, :value => @mixtape.id%>
-      <%= f.submit "Add song to #{@mixtape.name}"%>
+<% if current_user %>
+   <% if Song.all.length > 1 %>
+      <%= form_for :mixtapes_songs, url: record_song_mixtape_path do |f| %>
+         <%= f.label "Choose a song from the Mix.r Library" %><br/>
+         <%= f.collection_select(:song_id, Song.all, :id, :title) %>
+         <%= f.hidden_field :mixtape_id, :value => @mixtape.id%>
+         <%= f.submit "Add song to #{@mixtape.name}"%>
+      <% end %>
    <% end %>
 <% end %>

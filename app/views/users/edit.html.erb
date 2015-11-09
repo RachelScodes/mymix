@@ -1,7 +1,7 @@
 <h1>Edit your profile:</h1>
-<% if @user.id != current_user.id %>
+<% if current_user && (@user.id != current_user.id) %>
    <p> You can only edit <%= link_to 'your own profile!', user_path(current_user) %> Duh! </p>
-<% else %>
+<% elsif current_user && (@user.id == current_user.id) %>
    <%= form_for :user do |f| %>
       <%= f.label "What's your new DJ name, yo?" %>
       <%= f.text_field :dj_name %>
@@ -25,4 +25,8 @@
 
       <%= f.submit "Submit Changes" %>
    <% end %>
+<% else %>
+   <%# display nag to login when CREEPING as guest %>
+   <p class="nag"> seriously though how tf did you get here? Stop sneaking around!
+   <br><%= link_to 'LOGIN', '/login' %> or <%= link_to 'CREATE AN ACCOUNT', '/signup' %> ALREADY! :/</p>
 <% end %>
