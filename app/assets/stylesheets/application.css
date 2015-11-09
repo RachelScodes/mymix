@@ -20,6 +20,7 @@ body {
    background-image: url(http://silviahartmann.com/background-tile-art/images/black_woven_seamless_tile.jpg);
    overflow-x: hidden;
    overflow-y: scroll;
+   font-family: overlock sc;
 }
 
 
@@ -204,16 +205,14 @@ h1.mixtape#name {
 }
 
 .mixtape-song-list {
-   font-size: 15px;
+   font-size: 12px;
    background-image: url('https://raw.githubusercontent.com/RachelScodes/mymix/addErrorMessages/app/assets/images/song-list.png');
    background-repeat: repeat-y;
-    width: 744px;
-   padding-top: 260px;
-   padding-left: 20px;
-   padding-right: 20px;
+   padding: 20px;
    min-height: 381px;
    font-family: 'Rock Salt';
-    background-size: cover;
+   width: 460px;
+   background-size: contain;
 }
 
 .mixtape-song-list p {
@@ -224,7 +223,7 @@ h1.mixtape#name {
 }
 
 .song-history {
-   float: right;
+   /*float: right;*/
    position: relative;
 }
 
@@ -374,43 +373,39 @@ img {
    position: relative;
 }
 
-.two {
+.spine {
     background-image: url('https://raw.githubusercontent.com/RachelScodes/mymix/addErrorMessages/app/assets/images/cassette-spine.png');
-    width: 500px;
+    width: 470px;
     background-size: cover;
     height: 139px;
     display: inline-block;
 }
 
-.two > p {
-    font-family: permanent marker;
-    color: black;
-    display: inline-block;
-    width: 250px;
-    position: relative;
-}
-
-.spine {
-   display: block;
-   width: 500px;
-}
-
-.spine h3 {
+.spine > h3 {
    text-align: center;
    font-family: permanent marker;
    color: indianred;
    font-size: 23px;
-   line-height: 23px;
-
-   font-size: 23px;
    line-height: 78px;
+}
+
+.two {
+   display: block;
+   width: 470px;
+   font-family: permanent marker;
+   color: black;
+   position: relative;
+
+   font-size: 14px;
    background-image: url('https://raw.githubusercontent.com/RachelScodes/mymix/addErrorMessages/app/assets/images/cassette-spine2.png');
+   background-size: contain;
    height: 82px;
 }
 
-.mixtape-song-list{
-   width: 460px;
-   background-size: contain;
+.two p {
+    line-height: 23px;
+    display: inline-block;
+    width: 240px;
 }
 
 p.flash-notices {

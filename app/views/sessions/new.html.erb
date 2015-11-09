@@ -4,7 +4,6 @@
 
       <%# show login errors %>
       <div class="errors">
-         <% binding.pry %>
          <% if !flash[:error].nil? && (flash[:error] != []) %>
             <% flash.error.each do |name, msg| %>
                <%= content_tag :div, msg, class: 'error', id: 'error-detail' %>

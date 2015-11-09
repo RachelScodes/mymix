@@ -6,12 +6,12 @@
       <p><%= image_tag @mixtape.img_src %></p>
    </div>
 
+   <div class="spine">
+      <h3><%= @mixtape.name %> has: (<%= @mixtape.songs.size %>) Songs</h3>
+   </div>
    <div class="two">
       <p><%= @mixtape.about %></p>
       <p><%= @mixtape.dedication %></p>
-      <div class="spine">
-         <h3><%= @mixtape.name %> has: (<%= @mixtape.songs.size %>) Songs</h3>
-      </div>
    </div>
 
 

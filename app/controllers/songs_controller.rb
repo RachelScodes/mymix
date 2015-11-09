@@ -11,7 +11,6 @@ class SongsController < ApplicationController
    end
 
    def create
-      binding.pry
       # Different actions depending where song was created
       # Coming from mixtape, sanitize params!
       if params[:song][:mixtape_id]
@@ -67,7 +66,6 @@ class SongsController < ApplicationController
    def add_from_mix(path,mixtape,song)
       # Coming from a mixtape:
       if ( path.match '/mixtapes/' ) && song.save
-         binding.pry
          mixtape.record(song) # record song to mixtape it came from
          # flash[] = "You added #{song.title} by #{song.artist} to #{mixtape.name}! Rock on!"
          redirect_to path #success
