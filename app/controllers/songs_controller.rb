@@ -22,6 +22,7 @@ class SongsController < ApplicationController
       end
 
       @song = Song.new(song_params)
+      @song.fix_url(params[:song][:audio])
       @song.user_id = current_user.id
 
       # Verify redirects and actions based on URL referrer

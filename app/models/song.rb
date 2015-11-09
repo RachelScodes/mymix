@@ -11,4 +11,8 @@ class Song < ActiveRecord::Base
       message: "matches a song that is already in the Mix.r Library. \n Add it from the drop-down instead!" }
 
    # validates :audio
+
+   def fix_url(string)
+      self.audio = string.sub! 'watch?v=', 'v/'
+   end
 end
