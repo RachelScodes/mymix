@@ -22,8 +22,8 @@ class UsersController < ApplicationController
    def create
       @user = User.new(user_params)
       if @user.save
-         flash.notice = "Welcome to Mix.r #{@user.dj_name}! You will use this name to login."
-         redirect_to "/users/#{@user.id}"
+         flash.notice = "Welcome to Mix.r! Remember your DJ name #{@user.dj_name.upcase}, you will use it to login."
+         render 'sessions/new'
       else
          render 'new'
       end
