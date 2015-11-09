@@ -1,6 +1,8 @@
 #Mix.r
 ![Mixr-Logo](https://raw.githubusercontent.com/RachelScodes/mymix/master/mixr-logo.png)
-Heroku Link: https://rachelscodes-mixr.herokuapp.com/
+
+
+**Heroku Link: https://rachelscodes-mixr.herokuapp.com/**
 
 ##Table of Contents
 1. [Creators](#coded-and-designed-by)
@@ -20,9 +22,9 @@ Github: [RachelScodes](https://github.com/RachelScodes)
 
 Markdown Template from: **[Placehold.r](https://github.com/DBrodsky90/Placeholdr_app)**
 
-**Instructional Leads:** [Syed Salahuddin](), [Colin Hart]()
+**Instructional Leads:** [Syed Salahuddin](https://twitter.com/sssyed), [Colin Hart]()https://github.com/ColinTheRobot
 
-**Instructional Associates:** [David Brodsky](), [Ben Sayeg]()
+**Instructional Associates:** [David Brodsky](https://github.com/DBrodsky90), [Ben Sayeg](https://github.com/humanman)
 
 ##Technologies Used
 
@@ -30,12 +32,12 @@ Markdown Template from: **[Placehold.r](https://github.com/DBrodsky90/Placeholdr
 2. [Rails](https://github.com/rails/rails)
 3. [PostgreSQL](https://github.com/postgres/postgres)
 4. [gem 'bcrypt'](https://github.com/codahale/bcrypt-ruby)
-5. [pixlr.com](https://pixlr.com/editor/) Image editor
-6. Google fonts
+5. Image editor: [pixlr.com](https://pixlr.com/editor/)
+6. Misc: Google fonts, draw.io, rails-erd
 
 
 ##Entity Relationship Diagram
-![ERD](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/erd-current.png)
+![ERD](https://raw.githubusercontent.com/RachelScodes/mymix/master/erd-current.png)
 
 ##What is a Mixtape?
 
@@ -110,8 +112,8 @@ Things I don't want to do as a user:
   1. [x] Edit or delete someone else's account
 
 ##Wireframes
-![Wireframe](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/Wireframes.png)
-![Flowchart](https://raw.githubusercontent.com/RachelScodes/mymix/habtmUniq/mixr-flow.png)
+![Wireframe](https://raw.githubusercontent.com/RachelScodes/mymix/master/Wireframes.png)
+![Flowchart](https://raw.githubusercontent.com/RachelScodes/mymix/master/mixr-flow.png)
 
 ##Copyright Notice
 The images and music used in this app are for an educational project only and not for mass distribution or for profit.
