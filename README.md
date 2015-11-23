@@ -112,8 +112,9 @@ Things I don't want to do as a user:
   1. [x] Edit or delete someone else's account
 
 ##Wireframes
-![Wireframe](https://raw.githubusercontent.com/RachelScodes/mymix/master/Wireframes.png)
-![Flowchart](https://raw.githubusercontent.com/RachelScodes/mymix/master/mixr-flow.png)
+| Wireframe | Flowchart |
+|-----------|-----------|
+| ![Wireframe](https://raw.githubusercontent.com/RachelScodes/mymix/master/Wireframes.png) | ![Flowchart](https://raw.githubusercontent.com/RachelScodes/mymix/master/mixr-flow.png) |
 
 ##Copyright Notice
 The images and music used in this app are for an educational project only and not for mass distribution or for profit.
